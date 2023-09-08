@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
-import type Header from './models/header.model'
+import { navigationItems } from '@shared/mocks';
 
 @Component({
   standalone: true,
@@ -23,31 +23,5 @@ import type Header from './models/header.model'
 })
 
 export class HeaderComponent {
-  header: Header[] = [
-    {
-      materialIconName: 'home',
-      label: 'Início',
-      path: '/'
-    },
-    {
-      materialIconName: 'volunteer_activism',
-      label: 'Serviços',
-      path: '/services'
-    },
-    {
-      materialIconName: 'info',
-      label: 'Sobre',
-      path: '/about'
-    },
-    {
-      materialIconName: 'visibility',
-      label: 'Transparência',
-      path: '/transparency'
-    },
-    {
-      materialIconName: 'description',
-      label: 'Equipe e Documentações',
-      path: '/team-and-documentation'
-    }
-  ]
+  navigationItems = navigationItems
 }

@@ -1,0 +1,36 @@
+<footer class='footer'>
+  <div class='list-container'>
+    <ul class='list'>
+      <li class='list__item--title'>
+        Redes Sociais
+      </li>
+      <li class='list__item' *ngFor='let socialMedia of socialMedias'>
+        <a class='list__link' [href]='socialMedia.value' target='_blank'>
+          {{ socialMedia.label }}
+        </a>
+      </li>
+    </ul>
+    <ul class='list'>
+      <li class='list__item--title'>
+        Mapa do Site
+      </li>
+      <li class='list__item' *ngFor='let navigationItem of navigationItems'>
+        <a class='list__link' [routerLink]='navigationItem.value'>
+          {{ navigationItem.label }}
+        </a>
+      </li>
+    </ul>
+    <ul class='list'>
+      <li class='list__item--title'>
+        Contatos
+      </li>
+      <li class='list__item' *ngFor='let contact of contacts'>
+        {{ contact.value }}
+      </li>
+    </ul>
+  </div>
+  <p class='footer__paragraph'>
+    "E não se esqueçam de fazer o bem e de repartir com os outros, pois com tais sacrifícios Deus se agrada." <br>
+    Hebreus 13:16 (NVI)
+  </p>
+</footer>

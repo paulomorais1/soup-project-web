@@ -4,8 +4,8 @@
   </a>
   <nav class='navigation'>
     <ul class='navigation__menu'>
-      <li *ngFor='let item of header'>
-        <a class='navigation__link' [routerLink]='item.path'>
+      <li *ngFor='let item of navigationItems'>
+        <a class='navigation__link' [routerLink]='item.value'>
           {{ item.label }}
         </a>
       </li>
@@ -16,8 +16,8 @@
       <mat-icon aria-hidden='false' fontIcon='more_vert' />
     </button>
     <mat-menu #menu='matMenu'>
-      <button class='mobile-menu__button' mat-menu-item *ngFor='let item of header'>
-        <a class='navigation__link' [routerLink]='item.path'>
+      <button class='mobile-menu__button' mat-menu-item *ngFor='let item of navigationItems'>
+        <a class='navigation__link' [routerLink]='item.value'>
           <mat-icon [fontIcon]='item.materialIconName' /> {{ item.label }}
         </a>
       </button>
