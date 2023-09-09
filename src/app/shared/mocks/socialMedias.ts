@@ -1,4 +1,4 @@
-import type IOptionItem from './models/mocks.model'
+import type IOptionItem from './models/mocks.model';
 
 export const socialMedias: ReadonlyArray<IOptionItem> = [
   {
@@ -13,4 +13,4 @@ export const socialMedias: ReadonlyArray<IOptionItem> = [
     label: 'GitHub',
     value: 'https://github.com/Soup-Project-NGO'
   }
-]
+];

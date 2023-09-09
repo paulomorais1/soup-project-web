@@ -23,5 +23,5 @@ import { navigationItems } from '@shared/mocks';
 })
 
 export class HeaderComponent {
-  navigationItems = navigationItems
+  navigationItems = navigationItems;
 }

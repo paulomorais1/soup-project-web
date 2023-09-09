@@ -1,3 +1,3 @@
-export * from './contacts'
-export * from './navigationItems'
-export * from './socialMedias'
+export * from './contacts';
+export * from './navigationItems';
+export * from './socialMedias';

@@ -1,4 +1,4 @@
-import type IOptionItem from './models/mocks.model'
+import type IOptionItem from './models/mocks.model';
 
 export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: string; }> = [
   {
@@ -26,4 +26,4 @@ export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: st
     label: 'Equipe e Documentações',
     value: '/team-and-documentation'
   }
-]
+];
