@@ -1,4 +1,4 @@
-import type IOptionItem from './models/mocks.model'
+import type IOptionItem from './models/mocks.model';
 
 export const contacts: ReadonlyArray<IOptionItem> = [
   {
@@ -17,4 +17,4 @@ export const contacts: ReadonlyArray<IOptionItem> = [
     label: 'Endereço',
     value: 'Rua Joaquim Correia de Freitas, 337, Conjunto Residencial Ipiranga (Talavasso)'
   }
-]
+];

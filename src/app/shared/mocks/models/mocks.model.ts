@@ -3,4 +3,4 @@ interface IOptionItem {
   value: string;
 }
 
-export default IOptionItem
+export default IOptionItem;
