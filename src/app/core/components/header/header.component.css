@@ -24,9 +24,15 @@
 }
 
 .navigation__link {
-  color: var(--black-color);
+  color: var(--white-color);
+  font-weight: 500;
   display: flex;
   align-items: center;
+
+  @media (width <=1000px) {
+    color: var(--black-color);
+    font-weight: 400;
+  }
 }
 
 .mobile-menu {
@@ -38,5 +44,24 @@
 .mobile-menu__button {
   span {
     width: 100%;
+  }
+}
+
+.mat-icon {
+  color: var(--white-color);
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+
+  &:is([fontIcon='home'],
+    [fontIcon='volunteer_activism'],
+    [fontIcon='info'],
+    [fontIcon='alternate_email'],
+    [fontIcon='visibility'],
+    [fontIcon='description']) {
+    color: var(--primary-color);
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
   }
 }

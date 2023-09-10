@@ -1,0 +1,60 @@
+<section class="section" id="contact">
+  <div class="informations">
+    <h2 class="informations__title">
+      Contato
+    </h2>
+    <p class="informations__paragraph">
+      Para doações, sugestões e interesse em participar como voluntário do nosso projeto entre em contato conosco!
+    </p>
+    <p class="informations__paragraph">
+      {{ address }}
+    </p>
+    <p class="informations__paragraph">
+      {{ contact }}
+    </p>
+    <iframe class="informations__map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7429.455091378818!2d-48.49680675231378!3d-21.40062992941236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9394f17ef188f%3A0x10403b710ac3890f!2sBairro%20Talavasso%2C%20Taquaritinga%20-%20SP%2C%2015900-000!5e0!3m2!1spt-BR!2sbr!4v1694298841116!5m2!1spt-BR!2sbr"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form__half">
+      <mat-form-field>
+        <mat-label>Nome:</mat-label>
+        <input matInput formControlName="name" name="name" required>
+        <mat-error>{{ getErrorMessage('name') }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sobrenome:</mat-label>
+        <input matInput formControlName="surname" name="surname" required>
+        <mat-error>{{ getErrorMessage('surname') }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form__half">
+      <mat-form-field>
+        <mat-label>E-mail:</mat-label>
+        <input matInput formControlName="email" name="email" required>
+        <mat-error>{{ getErrorMessage('email') }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Celular:</mat-label>
+        <input matInput formControlName="phone" name="phone" required>
+        <mat-error>{{ getErrorMessage('phone') }}</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <mat-label>Assunto:</mat-label>
+      <input matInput formControlName="subject" name="subject" required>
+      <mat-error>{{ getErrorMessage('subject') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mensagem:</mat-label>
+      <textarea matInput formControlName="message" name="message" [maxlength]="messageMaxLength" cdkTextareaAutosize
+        cdkAutosizeMinRows="5" required></textarea>
+      <mat-hint align="end">{{formGroup.get('message')?.value.length}}/{{ messageMaxLength }}</mat-hint>
+      <mat-error>{{ getErrorMessage('message') }}</mat-error>
+    </mat-form-field>
+    <button class="form__submit-button" type="submit">
+      Enviar
+    </button>
+  </form>
+</section>

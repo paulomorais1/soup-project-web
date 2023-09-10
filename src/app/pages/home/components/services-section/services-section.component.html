@@ -1,0 +1,16 @@
+<section class="section" id="services">
+  <h2 class="section__title">
+    Nossos serviços
+  </h2>
+  <div class="card" *ngFor="let service of services; let odd = odd" [ngClass]="{'card--reverse': odd}">
+    <div class="card__header">
+      <h3 class="card__title">
+        <mat-icon [fontIcon]="service.materialIconName" /> {{ service.title }}
+      </h3>
+      <p class="card__description">
+        {{ service.description }}
+      </p>
+    </div>
+    <img class="card__image" [src]="service.srcImage" [alt]="service.title" draggable="false">
+  </div>
+</section>
