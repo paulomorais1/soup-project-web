@@ -9,12 +9,17 @@ export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: st
   {
     materialIconName: 'volunteer_activism',
     label: 'Serviços',
-    value: '/services'
+    value: '/#services'
   },
   {
     materialIconName: 'info',
     label: 'Sobre',
     value: '/about'
+  },
+  {
+    materialIconName: 'alternate_email',
+    label: 'Contato',
+    value: '/#contact'
   },
   {
     materialIconName: 'visibility',

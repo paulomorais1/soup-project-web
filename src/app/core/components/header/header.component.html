@@ -1,24 +1,30 @@
-<header class='header'>
-  <a routerLink='/'>
-    <img class='header__logo' src='/assets/medias/logo.png' alt='Projeto Sopa' draggable='false' />
+<header class="header">
+  <a routerLink="/">
+    <img class="header__logo" src="/assets/medias/logo.png" alt="Projeto Sopa" draggable="false" />
   </a>
-  <nav class='navigation'>
-    <ul class='navigation__menu'>
-      <li *ngFor='let item of navigationItems'>
-        <a class='navigation__link' [routerLink]='item.value'>
-          {{ item.label }}
+  <nav class="navigation">
+    <ul class="navigation__menu">
+      <li *ngFor="let navigationItem of navigationItems">
+        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.label.search('#')">
+          {{ navigationItem.label }}
+        </a>
+        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.label.search('#')">
+          {{ navigationItem.label }}
         </a>
       </li>
     </ul>
   </nav>
-  <div class='mobile-menu'>
-    <button mat-icon-button [matMenuTriggerFor]='menu' aria-label='menu'>
-      <mat-icon aria-hidden='false' fontIcon='more_vert' />
+  <div class="mobile-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
+      <mat-icon aria-hidden="false" fontIcon="more_vert" />
     </button>
-    <mat-menu #menu='matMenu'>
-      <button class='mobile-menu__button' mat-menu-item *ngFor='let item of navigationItems'>
-        <a class='navigation__link' [routerLink]='item.value'>
-          <mat-icon [fontIcon]='item.materialIconName' /> {{ item.label }}
+    <mat-menu #menu="matMenu">
+      <button class="mobile-menu__button" mat-menu-item *ngFor="let navigationItem of navigationItems">
+        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.label.search('#')">
+          <mat-icon [fontIcon]="navigationItem.materialIconName" /> {{ navigationItem.label }}
+        </a>
+        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.label.search('#')">
+          <mat-icon [fontIcon]="navigationItem.materialIconName" /> {{ navigationItem.label }}
         </a>
       </button>
     </mat-menu>

@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="statistics" *ngFor="let statistic of statistics">
+    <mat-icon [fontIcon]="statistic.materialIconName" />
+    <span class="statistics__amount">
+      +{{ statistic.amount }}
+    </span>
+    <span class="statistics__item">
+      {{ statistic.item }}
+    </span>
+    <span class="statistics__destination">
+      {{ statistic.destination }}
+    </span>
+  </div>
+</section>

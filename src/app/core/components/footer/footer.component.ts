@@ -9,7 +9,7 @@ import { contacts, navigationItems, socialMedias } from '@shared/mocks';
 })
 
 export class FooterComponent {
-  contacts = contacts.slice(0, 3);
+  contacts = contacts.slice(0, 2);
   navigationItems = navigationItems;
   socialMedias = socialMedias;
 }
