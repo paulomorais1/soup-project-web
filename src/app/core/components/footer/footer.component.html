@@ -15,10 +15,10 @@
         Mapa do Site
       </li>
       <li class="list__item" *ngFor="let navigationItem of navigationItems">
-        <a class="list__link" [href]="navigationItem.value" *ngIf="navigationItem.label.search('#')">
+        <a class="list__link" [href]="navigationItem.value" *ngIf="navigationItem.value.includes('#')">
           {{ navigationItem.label }}
         </a>
-        <a class="list__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.label.search('#')">
+        <a class="list__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.value.includes('#')">
           {{ navigationItem.label }}
         </a>
       </li>

@@ -5,10 +5,10 @@
   <nav class="navigation">
     <ul class="navigation__menu">
       <li *ngFor="let navigationItem of navigationItems">
-        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.label.search('#')">
+        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.value.includes('#')">
           {{ navigationItem.label }}
         </a>
-        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.label.search('#')">
+        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.value.includes('#')">
           {{ navigationItem.label }}
         </a>
       </li>
@@ -20,10 +20,10 @@
     </button>
     <mat-menu #menu="matMenu">
       <button class="mobile-menu__button" mat-menu-item *ngFor="let navigationItem of navigationItems">
-        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.label.search('#')">
+        <a class="navigation__link" [href]="navigationItem.value" *ngIf="navigationItem.value.includes('#')">
           <mat-icon [fontIcon]="navigationItem.materialIconName" /> {{ navigationItem.label }}
         </a>
-        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.label.search('#')">
+        <a class="navigation__link" [routerLink]="navigationItem.value" *ngIf="!navigationItem.value.includes('#')">
           <mat-icon [fontIcon]="navigationItem.materialIconName" /> {{ navigationItem.label }}
         </a>
       </button>

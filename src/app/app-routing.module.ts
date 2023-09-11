@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: async () => (await import('@pages/home/home.module')).HomeModule
   },
   {
+    path: 'transparency',
+    loadChildren: async () => (await import('@pages/transparency/transparency.module')).TransparencyModule
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
