@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.section__title {
+  color: var(--black-color);
+  font-size: 1.5rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding-left: 1rem;
+}
+
+.list__link {
+  color: var(--primary-color);
+  text-decoration: underline;
+}

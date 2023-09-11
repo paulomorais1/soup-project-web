@@ -1,0 +1,18 @@
+<section class="section">
+  <h2 class="section__title">
+    Detalhamento de Contas
+  </h2>
+  <ul class="list">
+    <li *ngFor="let item of accountDetailing">
+      > <a class="list__link" [href]="item.documentPath" download>{{ item.title }}</a>
+    </li>
+  </ul>
+  <h2 class="section__title">
+    Equipe e Documentações
+  </h2>
+  <ul class="list">
+    <li *ngFor="let item of teamAndDocumentation">
+      > <a class="list__link" [href]="item.documentPath" download>{{ item.title }}</a>
+    </li>
+  </ul>
+</section>

@@ -25,10 +25,5 @@ export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: st
     materialIconName: 'visibility',
     label: 'Transparência',
     value: '/transparency'
-  },
-  {
-    materialIconName: 'description',
-    label: 'Equipe e Documentações',
-    value: '/team-and-documentation'
   }
 ];
