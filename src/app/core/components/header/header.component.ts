@@ -12,7 +12,7 @@ import { navigationItems } from '@shared/mocks';
   standalone: true,
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
   imports: [
     CommonModule,
     RouterModule,

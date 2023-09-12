@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$custom-app-primary: mat.define-palette(mat.$green-palette, 500);
+$custom-app-secondaty: mat.define-palette(mat.$lime-palette, 800);
+
+$custom-theme: mat.define-light-theme((color: (primary: $custom-app-primary, accent: $custom-app-secondaty )));
+
+// https://material.angular.io/guide/duplicate-theming-styles
+mat.$theme-ignore-duplication-warnings: true;
+
+@include mat.all-component-themes($custom-theme);
+@include mat.core-theme($custom-theme);

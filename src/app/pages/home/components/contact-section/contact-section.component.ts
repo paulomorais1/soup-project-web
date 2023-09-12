@@ -14,6 +14,8 @@ import { send } from '@emailjs/browser';
 
 import { environment } from '@environments/environment';
 
+import { GetFieldErrorMessageService } from '@shared/services';
+
 import { contacts } from '@shared/mocks';
 
 import type IContact from './contact.model';
@@ -22,7 +24,7 @@ import type IContact from './contact.model';
   standalone: true,
   selector: 'app-contact-section',
   templateUrl: './contact-section.component.html',
-  styleUrls: ['./contact-section.component.css'],
+  styleUrls: ['./contact-section.component.scss'],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,7 +46,11 @@ export class ContactSectionComponent {
   address = `${contacts[2].value} • ${contacts[3].value}`;
   contact = `${contacts[1].value} • ${contacts[0].value}`;
 
-  constructor(private formBuilder: FormBuilder, private matSnackBar: MatSnackBar) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private matSnackBar: MatSnackBar,
+    private getFieldErrorMessageService: GetFieldErrorMessageService
+  ) {
     this.formGroup = this.formBuilder.group({
       name: ['',
         [
@@ -94,17 +100,7 @@ export class ContactSectionComponent {
   }
 
   getErrorMessage(fieldName: string) {
-    const control = this.formGroup.get(fieldName);
-
-    const errorMessages: { [key: string]: string } = {
-      required: 'Campo obrigatório!',
-      pattern: 'Formato inválido!',
-      email: 'Email inválido!',
-      minlength: `Mínimo de ${control?.errors?.['minlength']?.requiredLength} caracteres!`,
-      maxlength: `Máximo de ${control?.errors?.['maxlength']?.requiredLength} caracteres!`
-    };
-
-    return Object.keys(control?.errors || {}).map(errorKey => errorMessages[errorKey]);
+    return this.getFieldErrorMessageService.getErrorMessage(fieldName, this.formGroup);
   }
 
   async onSubmit() {

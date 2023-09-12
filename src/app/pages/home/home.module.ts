@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { BaseLayoutModuleModule } from '@core/modules/base-layout-module/base-layout-module.module';
+
 import { HomeRouting } from '@pages/home/home.routing';
 import { HomeComponent } from '@pages/home/home.component';
 import { InitialSectionComponent } from '@pages/home/components/initial-section/initial-section.component';
@@ -17,6 +19,7 @@ import { ContactSectionComponent } from '@pages/home/components/contact-section/
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRouting),
+    BaseLayoutModuleModule,
     StatisticsSectionComponent,
     ServicesSectionComponent,
     ContactSectionComponent
