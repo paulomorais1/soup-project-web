@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
@@ -11,7 +13,7 @@ body {
 }
 
 p {
-  color: var(--black-color);
+  color: $black-color;
 }
 
 a {

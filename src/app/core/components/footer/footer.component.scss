@@ -1,6 +1,8 @@
+@import 'variables';
+
 .footer {
-  background-color: var(--primary-color);
-  box-shadow: 5px 5px var(--secondary-color);
+  background-color: $primary-color;
+  box-shadow: 5px 5px $secondary-color;
   border-radius: 25px;
   margin: 2rem auto;
   padding: 2rem;
@@ -14,14 +16,14 @@
     gap: 1rem;
     padding: 2rem;
   }
-}
 
-.footer__paragraph {
-  color: var(--white-color);
-  text-align: center;
-  font-size: .9rem;
-  font-style: italic;
-  margin-top: 2rem;
+  &__paragraph {
+    color: $white-color;
+    text-align: center;
+    font-size: .9rem;
+    font-style: italic;
+    margin-top: 2rem;
+  }
 }
 
 .list-container {
@@ -37,18 +39,18 @@
   display: flex;
   flex-direction: column;
   gap: .25rem;
-}
 
-.list__item,
-.list__link {
-  color: var(--white-color);
-  font-weight: 500;
-  line-break: anywhere;
-}
+  &__item,
+  &__list__link {
+    color: $white-color;
+    font-weight: 500;
+    line-break: anywhere;
+  }
 
-.list__item--title {
-  color: var(--secondary-color);
-  font-size: 1.45rem;
-  font-weight: 600;
-  margin-bottom: .5rem;
+  &__item--title {
+    color: $secondary-color;
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
 }
