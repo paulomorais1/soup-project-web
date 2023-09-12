@@ -14,7 +14,7 @@ export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: st
   {
     materialIconName: 'info',
     label: 'Sobre',
-    value: '/about'
+    value: '/#about'
   },
   {
     materialIconName: 'alternate_email',
@@ -25,5 +25,10 @@ export const navigationItems: ReadonlyArray<IOptionItem & { materialIconName: st
     materialIconName: 'visibility',
     label: 'Transparência',
     value: '/transparency'
+  },
+  {
+    materialIconName: 'login',
+    label: 'Entrar',
+    value: '/sign-in'
   }
 ];

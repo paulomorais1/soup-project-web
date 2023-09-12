@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   selector: 'app-initial-section',
   templateUrl: './initial-section.component.html',
-  styleUrls: ['./initial-section.component.css'],
+  styleUrls: ['./initial-section.component.scss'],
   imports: [
     CommonModule,
     MatIconModule

@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: async () => (await import('@pages/transparency/transparency.module')).TransparencyModule
   },
   {
+    path: 'sign-in',
+    loadChildren: async () => (await import('@pages/sign-in/sign-in.module')).SignInModule
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

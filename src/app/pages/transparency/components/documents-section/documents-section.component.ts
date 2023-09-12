@@ -5,7 +5,7 @@ import type IDocument from './documents.model';
 @Component({
   selector: 'app-documents-section',
   templateUrl: './documents-section.component.html',
-  styleUrls: ['./documents-section.component.css']
+  styleUrls: ['./documents-section.component.scss']
 })
 
 export class DocumentsSectionComponent {

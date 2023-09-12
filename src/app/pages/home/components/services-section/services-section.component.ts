@@ -8,7 +8,7 @@ import type IService from './services.model';
   standalone: true,
   selector: 'app-services-section',
   templateUrl: './services-section.component.html',
-  styleUrls: ['./services-section.component.css'],
+  styleUrls: ['./services-section.component.scss'],
   imports: [
     CommonModule,
     MatIconModule

@@ -8,7 +8,7 @@ import type IStatisctis from './statistics.model';
   standalone: true,
   selector: 'app-statistics-section',
   templateUrl: './statistics-section.component.html',
-  styleUrls: ['./statistics-section.component.css'],
+  styleUrls: ['./statistics-section.component.scss'],
   imports: [
     CommonModule,
     MatIconModule
