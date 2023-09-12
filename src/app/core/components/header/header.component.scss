@@ -1,37 +1,39 @@
+@import 'variables';
+
 .header {
-  background-color: var(--primary-color);
+  background-color: $primary-color;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-}
 
-.header__logo {
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .05));
-  width: 100px;
+  &__logo {
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .05));
+    width: 100px;
+  }
 }
 
 .navigation {
   @media (width <=1000px) {
     display: none;
   }
-}
 
-.navigation__menu {
-  display: flex;
-  gap: 1rem;
-}
+  &__menu {
+    display: flex;
+    gap: 1rem;
+  }
 
-.navigation__link {
-  color: var(--white-color);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
+  &__link {
+    color: $white-color;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
 
-  @media (width <=1000px) {
-    color: var(--black-color);
-    font-weight: 400;
+    @media (width <=1000px) {
+      color: $black-color;
+      font-weight: 400;
+    }
   }
 }
 
@@ -39,16 +41,16 @@
   @media (width >=1000px) {
     display: none;
   }
-}
 
-.mobile-menu__button {
-  span {
-    width: 100%;
+  &__button {
+    span {
+      width: 100%;
+    }
   }
 }
 
 .mat-icon {
-  color: var(--white-color);
+  color: $white-color;
   font-size: 30px;
   width: 30px;
   height: 30px;
@@ -60,7 +62,7 @@
     [fontIcon='visibility'],
     [fontIcon='description'],
     [fontIcon='login']) {
-    color: var(--primary-color);
+    color: $primary-color;
     font-size: 25px;
     width: 25px;
     height: 25px;

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { MetatagService } from '@shared/services';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule
   ],

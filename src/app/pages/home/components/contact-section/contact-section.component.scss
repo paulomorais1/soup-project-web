@@ -1,3 +1,5 @@
+@import 'variables';
+
 .section {
   display: flex;
   align-items: end;
@@ -17,21 +19,21 @@
   gap: .5rem;
   max-width: 600px;
   width: 100%;
-}
 
-.informations__title {
-  color: var(--primary-color);
-  font-size: 2rem;
-}
+  &__title {
+    color: $primary-color;
+    font-size: 2rem;
+  }
 
-.informations__paragraph {
-  font-size: clamp(.85rem, 5vw, 1rem);
-  line-height: 1.85;
-}
+  &__paragraph {
+    font-size: clamp(.85rem, 5vw, 1rem);
+    line-height: 1.85;
+  }
 
-.informations__map {
-  border: none;
-  height: 300px;
+  &__map {
+    border: none;
+    height: 300px;
+  }
 }
 
 .form {
@@ -40,25 +42,25 @@
   gap: .5rem;
   max-width: 500px;
   width: 100%;
-}
 
-.form__half {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: .5rem;
-}
+  &__half {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+  }
 
-.form__submit-button {
-  color: var(--white-color);
-  background-color: var(--primary-color);
-  border: none;
-  text-transform: uppercase;
-  font-weight: 600;
-  cursor: pointer;
-  padding-block: 1rem;
-  transition: 300ms ease-out;
+  &__submit-button {
+    color: $white-color;
+    background-color: $primary-color;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding-block: 1rem;
+    transition: 300ms ease-out;
 
-  &:hover {
-    opacity: .5;
+    &:hover {
+      opacity: .5;
+    }
   }
 }
