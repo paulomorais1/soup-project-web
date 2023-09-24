@@ -45,6 +45,10 @@
     color: $white-color;
     font-weight: 500;
     line-break: anywhere;
+
+    &:visited {
+      color: $white-color;
+    }
   }
 
   &__item--title {
