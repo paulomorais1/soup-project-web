@@ -7,17 +7,17 @@ import { BaseLayoutModuleModule } from '@core/modules/base-layout-module/base-la
 import { SignInRouting } from '@pages/sign-in/sign-in.routing';
 import { SignInComponent } from '@pages/sign-in/sign-in.component';
 import { FormSectionComponent } from '@pages/sign-in/components/form-section/form-section.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    SignInComponent
-  ],
+  declarations: [SignInComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(SignInRouting),
     BaseLayoutModuleModule,
-    FormSectionComponent
-  ]
+    FormsModule,
+    FormSectionComponent,
+    
+  ],
 })
-
-export class SignInModule { }
+export class SignInModule {}

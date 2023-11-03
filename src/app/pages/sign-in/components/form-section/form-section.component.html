@@ -1,26 +1,38 @@
 <section class="section">
   <h1 class="section__title">
     Olá novamente!
-    <span class="section__message">
-      Entre em sua conta
-    </span>
+    <span class="section__message"> Entre em sua conta </span>
   </h1>
-  <form class="form" [formGroup]="formGroup">
+  <form class="form" [formGroup]="formGroup" (ngSubmit)="doLogin()">
     <mat-form-field color="accent" hideRequiredMarker="true">
       <mat-label>Celular:</mat-label>
-      <input matInput formControlName="phone">
-      <mat-error class="form__error-message">{{ getErrorMessage('phone') }}</mat-error>
+      <input matInput [(ngModel)]="requestLogin.phone" formControlName="phone" />
+      <mat-error class="form__error-message">{{
+        getErrorMessage("phone")
+      }}</mat-error>
     </mat-form-field>
     <mat-form-field color="accent" hideRequiredMarker="true">
       <mat-label>Senha:</mat-label>
-      <input matInput [type]="showPassword ? 'password' : 'text'" formControlName="password">
-      <mat-error class="form__error-message">{{ getErrorMessage('password') }}</mat-error>
-      <button type="button" mat-icon-button matSuffix (click)="onToggleShowPassword()">
-        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      <input
+        matInput
+        [(ngModel)]="requestLogin.password"
+        [type]="showPassword ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <mat-error class="form__error-message">{{
+        getErrorMessage("password")
+      }}</mat-error>
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="onToggleShowPassword()"
+      >
+        <mat-icon>{{
+          showPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
       </button>
     </mat-form-field>
-    <button class="form__submit-button" mat-button type="submit">
-      Entrar
-    </button>
+    <button class="form__submit-button" (click)="doLogin" mat-button type="submit">Entrar</button>
   </form>
 </section>
