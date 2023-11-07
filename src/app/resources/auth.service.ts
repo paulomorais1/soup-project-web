@@ -5,6 +5,9 @@ import { ResponseLogin } from './models/ResponseLogin';
   providedIn: 'root',
 })
 export class AuthService {
+  authenticate() {
+    throw new Error('Method not implemented.');
+  }
 
 
   public loginResponse: ResponseLogin | undefined;
