@@ -61,7 +61,7 @@ export class FormSectionComponent {
   }
   public doLogin(): void {
     this.loginService.doLogin(this.requestLogin!).subscribe(
-      (data) => {
+      () => {
         this.router.navigate(['dashboard']);
       },
       (error) => {

@@ -9,12 +9,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HeaderComponent } from './core/components/header/header.component';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { DashboardSidebarComponent } from './core/components/header/sidebar/sidebar.component';
+import { MenuItemComponent } from './core/components/header/sidebar/menu-item/menu-item.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent, 
+    DashboardSidebarComponent,
+    MenuItemComponent
+
   ],
   imports: [
     CommonModule,
@@ -25,6 +32,12 @@ import { HeaderComponent } from './core/components/header/header.component';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatIconModule
+
 
   ]
 })
