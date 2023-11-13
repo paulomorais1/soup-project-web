@@ -1,0 +1,15 @@
+<div>
+    <dashboard-header (menuToggled)="toggle()"></dashboard-header>
+    
+    <mat-drawer-container>
+      <mat-drawer mode="side" [opened]="opened">
+        <app-menu-item [menu]="menu"></app-menu-item>
+      </mat-drawer>
+  
+      <mat-drawer-content [class.margin-left]="opened">
+        <!-- Conteúdo principal da página -->
+        <router-outlet></router-outlet>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+  
