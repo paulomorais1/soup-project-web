@@ -1,66 +1,42 @@
-@import 'variables';
+// Add your color variables or import them from a separate file
+// @import 'variables';
 
-.your-class {
-  color: $primary-color;
-  // Other styles
-}
-.user-profile {
-    display: flex;
-    align-items: end;
-    justify-content: space-evenly;
-    padding: 2rem;
-  
-    @media (max-width: 1300px) {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-  
-    .informations {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      max-width: 600px;
-      width: 100%;
-  
-      &__title {
-        color: $primary-color;
-        font-size: 2rem;
-      }
-  
-      &__paragraph {
-        font-size: clamp(0.85rem, 5vw, 1rem);
-        line-height: 1.85;
-      }
-    }
-  
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      max-width: 500px;
-      width: 100%;
-  
-      &__half {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
-      }
-  
-      &__submit-button {
-        color: $white-color;
-        background-color: $primary-color;
-        border: none;
-        text-transform: uppercase;
-        font-weight: 600;
-        cursor: pointer;
-        padding-block: 1rem;
-        transition: 300ms ease-out;
-  
-        &:hover {
-          opacity: 0.5;
-        }
-      }
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+
+  .form__half {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); // Change to one column in small screens
+    gap: 1.5rem;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .form__submit-button {
+    color: #fff; // Use your color variables here
+    background-color: #007bff; // Use your color variables here
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem; // Smaller button size
+    transition: background-color 300ms ease-out;
+
+    &:hover {
+      background-color: #0056b3; // Use your color variables here
     }
   }
-  
+
+  @media (min-width: 600px) {
+    .form__half {
+      grid-template-columns: repeat(2, 1fr); // Switch back to two columns on larger screens
+    }
+  }
+}

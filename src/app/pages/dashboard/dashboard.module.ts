@@ -17,7 +17,10 @@ import { MatListModule } from '@angular/material/list';
 import { PageHeaderComponent } from './core/components/header/page-header/page-header.component';
 import { BeneficiaryComponent } from './core/components/beneficiary/beneficiary.component';
 import { ColaboradorComponent } from './core/components/colaborador/colaborador.component';
-import { FormColaboradorModule } from './core/components/colaborador/cadastrar/form-colaborador.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormColaboradorComponent } from './core/components/colaborador/cadastrar/form-colaborador.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { FormColaboradorModule } from './core/components/colaborador/cadastrar/f
     PageHeaderComponent,
     BeneficiaryComponent,
     ColaboradorComponent,
-    // FormColaboradorComponent, // Remove this line
+    FormColaboradorComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,10 @@ import { FormColaboradorModule } from './core/components/colaborador/cadastrar/f
     MatExpansionModule,
     MatListModule,
     MatIconModule,
-    FormColaboradorModule, // Add this line
+    
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
 })
 export class DashboardModule {}

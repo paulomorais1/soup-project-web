@@ -1,30 +1,74 @@
-<!-- In your template -->
-<form class="form">
+<form [formGroup]="userForm" class="form" (ngSubmit)="onSubmit()">
   <div class="form__half">
     <mat-form-field>
       <mat-label>Nome:</mat-label>
-      <input matInput formControlName="name" required>
+      <input matInput formControlName="name" required />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Sobrenome:</mat-label>
-      <input matInput formControlName="surname" required>
+      <input matInput formControlName="surname" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Setor:</mat-label>
+      <input matInput formControlName="sector" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Função:</mat-label>
+      <input matInput formControlName="role" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Endereço:</mat-label>
+      <input
+        matInput
+        formControlName="street"
+        placeholder="Rua"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="city"
+        placeholder="Cidade"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="zipCode"
+        placeholder="CEP"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefone:</mat-label>
+      <input matInput formControlName="phone" required />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email:</mat-label>
-      <input matInput formControlName="email">
+      <input matInput formControlName="email" />
     </mat-form-field>
   </div>
 
   <div class="form__half">
     <mat-form-field>
       <mat-label>Senha:</mat-label>
-      <input matInput formControlName="password" type="password" required>
+      <input matInput formControlName="password" type="password" required />
+    </mat-form-field>
+
+    <!-- Certifique-se de fornecer um valor adequado para isInterviewer -->
+    <mat-form-field>
+      <mat-label>Entrevistador:</mat-label>
+      <input matInput formControlName="isInterviewer" />
     </mat-form-field>
   </div>
-  
-  <button class="form__submit-button" type="submit">
-    Cadastrar
-  </button>
+
+  <button class="form__submit-button" type="submit" (click)="onSubmit()">Cadastrar</button>
 </form>

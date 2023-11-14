@@ -1,17 +1,13 @@
-// form-colaborador.module.ts
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormColaboradorComponent } from './form-colaborador.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+// form-colaborador.component.ts
 
-@NgModule({
-  declarations: [FormColaboradorComponent],
-  imports: [CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
+import { Component, Input } from '@angular/core';
+import { IUser } from 'app/resources/models/colaborador.models';
 
-  ],
-  exports: [FormColaboradorComponent],
+@Component({
+  selector: 'app-form-colaborador',
+  templateUrl: './form-colaborador.component.html',
+  styleUrls: ['./form-colaborador.component.scss'],
 })
-export class FormColaboradorModule {}
+export class FormColaboradorComponent {
+  @Input() user: IUser | undefined;
+}

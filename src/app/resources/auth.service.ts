@@ -11,6 +11,7 @@ export class AuthService {
 
 
   public loginResponse: ResponseLogin | undefined;
+  public createResponse: ResponseLogin | undefined;
 
   public clear(): void {
     this.loginResponse = undefined;
