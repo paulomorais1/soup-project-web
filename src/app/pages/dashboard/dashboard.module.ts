@@ -14,13 +14,23 @@ import { DashboardSidebarComponent } from './core/components/header/sidebar/side
 import { MenuItemComponent } from './core/components/header/sidebar/menu-item/menu-item.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { PageHeaderComponent } from './core/components/colaborador/page-header.component';
+import { BeneficiaryComponent } from './core/components/colaborador/beneficiary.component';
+import { ColaboradorComponent } from './core/components/colaborador/colaborador.component';
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HeaderComponent, 
     DashboardSidebarComponent,
-    MenuItemComponent
+    MenuItemComponent,
+   
+    PageHeaderComponent,
+    BeneficiaryComponent,
+    ColaboradorComponent,
+
+    
 
   ],
   imports: [
@@ -37,6 +47,7 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatListModule,
     MatIconModule
+    
 
 
   ]
