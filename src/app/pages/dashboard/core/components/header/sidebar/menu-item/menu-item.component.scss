@@ -1,27 +1,21 @@
 .mat-expansion-panel {
   box-shadow: none;
   background: transparent;
+  display: flex;
+  flex-direction: column;
 }
 
-.mat-expansion-panel-header {
-  padding: 0 16px;
-}
-
-.mat-expansion-panel-header-title,
-.mat-expansion-panel-header-description {
-  align-items: center;
-}
-
-.mat-list-icon {
-  padding: 4px;
+.mat-expansion-panel-content.mat-expansion-panel-body {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .mat-list-item {
   cursor: pointer;
   border-left: 4px solid transparent;
   transition: 0.2s all;
-
   box-sizing: border-box;
+  margin-right: 10px; /* Espaço entre os itens, ajuste conforme necessário */
 }
 
 .mat-list-item:hover {
@@ -48,4 +42,6 @@
 .active {
   background: #94a5ff33 !important;
   border-left: 4px solid #3f51b5;
+ 
 }
+/* Styles for submenu lines within app-menu-item component */

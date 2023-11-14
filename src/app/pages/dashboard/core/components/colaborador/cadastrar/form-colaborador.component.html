@@ -1,0 +1,30 @@
+<!-- In your template -->
+<form class="form">
+  <div class="form__half">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sobrenome:</mat-label>
+      <input matInput formControlName="surname" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+  </div>
+
+  <div class="form__half">
+    <mat-form-field>
+      <mat-label>Senha:</mat-label>
+      <input matInput formControlName="password" type="password" required>
+    </mat-form-field>
+  </div>
+  
+  <button class="form__submit-button" type="submit">
+    Cadastrar
+  </button>
+</form>

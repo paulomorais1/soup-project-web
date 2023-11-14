@@ -46,7 +46,7 @@ export class DashboardSidebarComponent {
       color: '#ff7f0e',
       subMenu: [
         {
-          title: 'Cadastrar',
+          title: 'Cadas',
           icon: 'person_add',
           link: '/dashboard/register-beneficiary',
           color: '#ff7f0e',

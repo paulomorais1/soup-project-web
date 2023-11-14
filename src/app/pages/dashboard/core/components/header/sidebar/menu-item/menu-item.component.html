@@ -1,6 +1,8 @@
+<!-- sidebar.component.html -->
+
 <mat-list>
   <ng-container *ngFor="let item of menu">
-    <!-- If the item doesn't have children show it as list item-->
+    <!-- If the item doesn't have children, show it as a list item -->
     <ng-container *ngIf="item.subMenu === undefined">
       <mat-list-item
         *ngIf="item.title"
@@ -15,7 +17,7 @@
       </mat-list-item>
     </ng-container>
 
-    <!-- If the item has subMenu show it as accordion-->
+    <!-- If the item has subMenu, show it as an accordion -->
     <ng-container *ngIf="item.subMenu && item.subMenu.length > 0">
       <mat-expansion-panel [expanded]="item.expanded">
         <mat-expansion-panel-header>
@@ -26,7 +28,8 @@
             <span mat-line class="list-item">{{ item.title }}</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-menu-item [menu]="item.subMenu"></app-menu-item>
+        <!-- Recursively call the same component for subMenu -->
+        <app-menu-item [menu]="item.subMenu "  ></app-menu-item>
       </mat-expansion-panel>
     </ng-container>
   </ng-container>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-colaborador',
   template: `
@@ -13,7 +12,7 @@ import { Component } from '@angular/core';
     </app-page-header>
 
     <div style="padding: 0 20px">
-      Hello from info
+    <app-form-colaborador></app-form-colaborador>
     </div>
   `
 })

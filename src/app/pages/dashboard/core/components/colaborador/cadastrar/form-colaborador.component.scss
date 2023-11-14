@@ -1,0 +1,66 @@
+@import 'variables';
+
+.your-class {
+  color: $primary-color;
+  // Other styles
+}
+.user-profile {
+    display: flex;
+    align-items: end;
+    justify-content: space-evenly;
+    padding: 2rem;
+  
+    @media (max-width: 1300px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .informations {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 600px;
+      width: 100%;
+  
+      &__title {
+        color: $primary-color;
+        font-size: 2rem;
+      }
+  
+      &__paragraph {
+        font-size: clamp(0.85rem, 5vw, 1rem);
+        line-height: 1.85;
+      }
+    }
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+  
+      &__half {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+  
+      &__submit-button {
+        color: $white-color;
+        background-color: $primary-color;
+        border: none;
+        text-transform: uppercase;
+        font-weight: 600;
+        cursor: pointer;
+        padding-block: 1rem;
+        transition: 300ms ease-out;
+  
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  
