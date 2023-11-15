@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
     </app-page-header>
 
     <div style="padding: 0 20px">
-      Hello from Sales
+    <app-form-beneficiary></app-form-beneficiary>
     </div>
   `
 })
