@@ -1,0 +1,145 @@
+<form [formGroup]="beneficiaryForm" class="form" (ngSubmit)="onSubmitBn()">
+  <!-- Primeira metade dos campos -->
+  <div class="form__half">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sobrenome:</mat-label>
+      <input matInput formControlName="surname" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefone:</mat-label>
+      <input matInput formControlName="phoneNumber" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Recebe pensão na família:</mat-label>
+      <input
+        matInput
+        formControlName="valuePension"
+        id="valuePension"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>RG:</mat-label>
+      <input matInput formControlName="rg" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>CPF:</mat-label>
+      <input matInput formControlName="cpf" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data de nascimento:</mat-label>
+      <input matInput formControlName="dateOfBirth" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rua:</mat-label>
+      <input matInput formControlName="street" placeholder="Rua" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cidade:</mat-label>
+      <input matInput formControlName="city" placeholder="Cidade" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>CEP:</mat-label>
+      <input matInput formControlName="zipCode" placeholder="CEP" required />
+    </mat-form-field>
+
+    <div>
+      <label for="housingCondition">Condição de Moradia:</label>
+      <select formControlName="housingCondition" id="housingCondition">
+        <option value="CASA PRÓPRIA">CASA PRÓPRIA</option>
+        <option value="ALUGADA">ALUGADA</option>
+        <option value="OUTROS">OUTROS</option>
+      </select>
+      <div
+        *ngIf="beneficiaryForm?.get('housingCondition')?.hasError('required')"
+      >
+        Condição de moradia é obrigatória.
+      </div>
+    </div>
+
+    <!-- value -->
+    <div>
+      <mat-form-field>
+        <mat-label>Value:</mat-label>
+        <input matInput formControlName="value" placeholder="Valor" required />
+      </mat-form-field>
+    </div>
+    <!-- Recebe Bolsa Família -->
+    <div>
+      <label for="status">Recebe Bolsa Família:</label>
+      <select formControlName="status" id="status">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+      <div
+        *ngIf="beneficiaryForm.get('status')?.hasError('required')"
+      >
+        <!-- Tratamento de erro, se necessário -->
+      </div>
+    </div>
+
+    <!-- Value Bolsa Família -->
+    <div *ngIf="beneficiaryForm.get('status')?.value === 'Sim'">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="value"
+          placeholder="Valor Bolsa Família:"
+          required
+        />
+        <div
+          *ngIf="beneficiaryForm.get('value')?.hasError('required')"
+        >
+          <!-- Tratamento de erro, se necessário -->
+        </div>
+      </mat-form-field>
+    </div>
+
+    <!-- Recebe Pensão -->
+    <div>
+      <label for="status">Recebe Pensão:</label>
+      <select formControlName="status" id="status">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+      <div *ngIf="beneficiaryForm.get('status')?.hasError('required')">
+        <!-- Tratamento de erro, se necessário -->
+      </div>
+    </div>
+
+    <!-- Value Pensão -->
+    <div *ngIf="beneficiaryForm.get('status')?.value === 'Sim'">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="value"
+          placeholder="Valor da pensão é obrigatório."
+          required
+        />
+        <div *ngIf="beneficiaryForm.get('value')?.hasError('required')">
+          <!-- Tratamento de erro, se necessário -->
+        </div>
+      </mat-form-field>
+    </div>
+
+    
+  </div>
+
+  <!-- Botão de envio -->
+  <button class="form__submit-button" type="submit">
+    Cadastrar Beneficiário
+  </button>
+</form>

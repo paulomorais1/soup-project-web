@@ -1,0 +1,44 @@
+// form-beneficiary.component.scss
+
+// Add your color variables or import them from a separate file
+// @import 'variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+
+  .form__half {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); // Change to one column in small screens
+    gap: 1.2rem;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .form__submit-button {
+    color: #fff; // Use your color variables here
+    background-color: #007bff; // Use your color variables here
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem; // Smaller button size
+    transition: background-color 300ms ease-out;
+
+    &:hover {
+      background-color: #0056b3; // Use your color variables here
+    }
+  }
+
+  @media (min-width: 600px) {
+    .form__half {
+      grid-template-columns: repeat(2, 1fr); // Switch back to two columns on larger screens
+    }
+  }
+}
