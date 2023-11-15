@@ -51,14 +51,14 @@ export class BeneficiaryFormComponent {
       };
       
       const familyScholarship: IFamilyScholarship = {
-        status: this.beneficiaryForm.get('status-bolsa-familia')?.value,
-        value: this.beneficiaryForm.get('value-bolsa-familia')?.value,
+        status: this.beneficiaryForm.get('status')?.value,
+        value: this.beneficiaryForm.get('value')?.value,
         
 
       };
       const receivePension: IReceivePension = {
-        status: this.beneficiaryForm.get('status-pensao')?.value,
-        value: this.beneficiaryForm.get('value-pensao')?.value,
+        status: this.beneficiaryForm.get('status')?.value,
+        value: this.beneficiaryForm.get('value')?.value,
         
 
       };

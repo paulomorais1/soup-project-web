@@ -7,9 +7,14 @@ export class IAddress {
 export type IHousingCondition = 'CASA PRÓPRIA' | 'ALUGADA' | 'OUTROS';
 
 export class IHome {
-  public housingCondition: IHousingCondition | undefined;
-  public value?: number | undefined;
-}
+  constructor(
+
+    public housingCondition: IHousingCondition | undefined,
+    public value?: number | undefined,
+    )
+    {}
+  }
+ 
 export class IFamilyScholarship {
   public status: string | undefined;
   public value?: number | undefined;
