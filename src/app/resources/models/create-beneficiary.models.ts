@@ -2,6 +2,7 @@ export class IAddress {
   public street: string | undefined;
   public city: string | undefined;
   public zipCode: string | undefined;
+  public district: string | undefined;
 }
 
 export type IHousingCondition = 'CASA PRÓPRIA' | 'ALUGADA' | 'OUTROS';
@@ -16,12 +17,12 @@ export class IHome {
   }
  
 export class IFamilyScholarship {
-  public status: string | undefined;
-  public value?: number | undefined;
+  public familyStatus: string | undefined;
+  public familyValue?: number | undefined;
 }
 export class IReceivePension {
-  public status: string | undefined;
-  public value?: number | undefined;
+  public statusPension: string | undefined;
+  public valueReceive?: number | undefined;
 }
 
 export class ICompositionFamily {
@@ -34,15 +35,15 @@ export class ICompositionFamily {
   public specialNeeds: ISpecialNeeds | undefined;
 }
 export class IHasincome {
-  public status: string | undefined;
-  public value?: number | undefined;
+  public statusHasincome: string | undefined;
+  public valueHasincome?: number | undefined;
 }
 export class ISpecialNeeds {
-  public status: string | undefined;
+  public statusSpecialNeeds: string | undefined;
   public whatDisability: string | undefined;
 }
 export class IResidentHasIllness {
-  public status: string | undefined;
+  public statusIllness: string | undefined;
   public which: string | undefined;
 }
 export interface IBeneficiary {

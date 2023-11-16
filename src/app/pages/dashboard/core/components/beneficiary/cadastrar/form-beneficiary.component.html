@@ -3,143 +3,280 @@
   <div class="form__half">
     <mat-form-field>
       <mat-label>Nome:</mat-label>
-      <input matInput formControlName="name" required />
+      <input matInput formControlName="name" name="name" required />
+      <mat-error>{{ getErrorMessage('name') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Sobrenome:</mat-label>
-      <input matInput formControlName="surname" required />
+      <input matInput formControlName="surname" name="surname" required />
+      <mat-error>{{ getErrorMessage('surname') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Telefone:</mat-label>
-      <input matInput formControlName="phoneNumber" required />
+      <input matInput formControlName="phoneNumber" name="phoneNumber" required />
+      <mat-error>{{ getErrorMessage('phoneNumber') }}</mat-error>
     </mat-form-field>
+    
+    <!-- Alguém da familia recebe Aposentadoria  -->
+    <div>
+      <label for="familyReceivepension">Alguém da familia recebe Aposentadoria:</label>
+      <select formControlName="familyReceivepension" id="familyReceivepension" name="familyReceivepension">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+      
+    </div>
 
-    <mat-form-field>
-      <mat-label>Recebe pensão na família:</mat-label>
-      <input
-        matInput
-        formControlName="valuePension"
-        id="valuePension"
-        required
-      />
-    </mat-form-field>
+    <!-- Value Pensão -->
+    <div *ngIf="beneficiaryForm.get('familyReceivepension')?.value === 'Sim'">
+      <mat-form-field>
+        <input matInput formControlName="valuePension" type="number" name="valuePension" placeholder="Digite o valor da Aposentadoria" required />
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+        <mat-error>{{ getErrorMessage('valuePension') }}</mat-error>
+      </mat-form-field>
+    </div>
+
 
     <mat-form-field>
       <mat-label>RG:</mat-label>
-      <input matInput formControlName="rg" required />
+      <input matInput formControlName="rg" name="rg" required />
+      <mat-error>{{ getErrorMessage('rg') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>CPF:</mat-label>
-      <input matInput formControlName="cpf" required />
+      <input matInput formControlName="cpf" name="cpf" required />
+      <mat-error>{{ getErrorMessage('cpf') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Data de nascimento:</mat-label>
-      <input matInput formControlName="dateOfBirth" required />
+      <mat-label>Data de Nascimento:</mat-label>
+      <input matInput [matDatepicker]="dateOfBirthPicker" formControlName="dateOfBirth" name="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="dateOfBirthPicker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>{{ getErrorMessage('dateOfBirth') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Rua:</mat-label>
-      <input matInput formControlName="street" placeholder="Rua" required />
+      <input matInput formControlName="street" placeholder="Rua" name="street" required />
+      <mat-error>{{ getErrorMessage('street') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Rua:</mat-label>
+      <input matInput formControlName="district" placeholder="Bairro" name="district" required />
+      <mat-error>{{ getErrorMessage('district') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Cidade:</mat-label>
-      <input matInput formControlName="city" placeholder="Cidade" required />
+      <input matInput formControlName="city"  placeholder="Cidade" name="city" required />
+      <mat-error>{{ getErrorMessage('city') }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>CEP:</mat-label>
-      <input matInput formControlName="zipCode" placeholder="CEP" required />
+      <input matInput formControlName="zipCode"  placeholder="CEP" name="zipCode" required />
+      <mat-error>{{ getErrorMessage('zipCode') }}</mat-error>
     </mat-form-field>
 
     <div>
       <label for="housingCondition">Condição de Moradia:</label>
-      <select formControlName="housingCondition" id="housingCondition">
+      <select formControlName="housingCondition" id="housingCondition" name="housingCondition">
         <option value="CASA PRÓPRIA">CASA PRÓPRIA</option>
         <option value="ALUGADA">ALUGADA</option>
         <option value="OUTROS">OUTROS</option>
       </select>
-      <div
-        *ngIf="beneficiaryForm?.get('housingCondition')?.hasError('required')"
-      >
-        Condição de moradia é obrigatória.
-      </div>
+    
     </div>
 
-    <!-- value -->
+    <!-- Valor da Moradia -->
     <div>
       <mat-form-field>
-        <mat-label>Value:</mat-label>
-        <input matInput formControlName="value" placeholder="Valor" required />
+        <mat-label>Valor da Moradia:</mat-label>
+        <input matInput formControlName="value" type="number" placeholder="Valor" name="value" required />
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+        <mat-error>{{ getErrorMessage('value') }}</mat-error>
       </mat-form-field>
     </div>
-    <!-- Recebe Bolsa Família -->
+
+    <!-- Profissão do responsavel -->
     <div>
-      <label for="status">Recebe Bolsa Família:</label>
-      <select formControlName="status" id="status">
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-      </select>
-      <div
-        *ngIf="beneficiaryForm.get('status')?.hasError('required')"
-      >
-        <!-- Tratamento de erro, se necessário -->
-      </div>
+      <mat-form-field>
+        <mat-label>Profissão do Responsavel da Familía:</mat-label>
+        <input matInput formControlName="professionFamilyresponsible" name="professionFamilyreponsible" placeholder="Profissão do Responsavel" required />
+        <mat-error>{{ getErrorMessage('professionFamilyreponsible') }}</mat-error>
+      </mat-form-field>
     </div>
 
-    <!-- Value Bolsa Família -->
-    <div *ngIf="beneficiaryForm.get('status')?.value === 'Sim'">
+    <!-- Recebe Bolsa Família -->
+    <div>
+      <label for="familyStatus">Recebe Bolsa Família:</label>
+      <select formControlName="familyStatus" id="familyStatus" name="familyStatus">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+        <mat-error>{{ getErrorMessage('familyStatus') }}</mat-error>
+      </select>
+     
+    </div>
+
+    <!-- Valor Bolsa Família -->
+    <div *ngIf="beneficiaryForm.get('familyStatus')?.value === 'Sim'">
       <mat-form-field>
-        <input
-          matInput
-          formControlName="value"
-          placeholder="Valor Bolsa Família:"
-          required
-        />
-        <div
-          *ngIf="beneficiaryForm.get('value')?.hasError('required')"
-        >
-          <!-- Tratamento de erro, se necessário -->
-        </div>
+        <input matInput formControlName="familyValue" type="number" name="familyValue" placeholder="Valor Bolsa Família:" required />
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+        <mat-error>{{ getErrorMessage('familyValue') }}</mat-error>
       </mat-form-field>
     </div>
 
     <!-- Recebe Pensão -->
     <div>
-      <label for="status">Recebe Pensão:</label>
-      <select formControlName="status" id="status">
+      <label for="statusPension">Recebe Pensão:</label>
+      <select formControlName="statusPension" id="statusPension" name="statusPension">
         <option value="Sim">Sim</option>
         <option value="Não">Não</option>
+        <mat-error>{{ getErrorMessage('statusPension') }}</mat-error>
       </select>
-      <div *ngIf="beneficiaryForm.get('status')?.hasError('required')">
-        <!-- Tratamento de erro, se necessário -->
-      </div>
+    
     </div>
 
     <!-- Value Pensão -->
-    <div *ngIf="beneficiaryForm.get('status')?.value === 'Sim'">
+    <div *ngIf="beneficiaryForm.get('statusPension')?.value === 'Sim'">
       <mat-form-field>
-        <input
-          matInput
-          formControlName="value"
-          placeholder="Valor da pensão é obrigatório."
-          required
-        />
-        <div *ngIf="beneficiaryForm.get('value')?.hasError('required')">
-          <!-- Tratamento de erro, se necessário -->
-        </div>
+        <input matInput formControlName="valueReceive" type="number" name="valueReceive" placeholder="Valor da pensão é obrigatório." required />
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+        <mat-error>{{ getErrorMessage('valueReceive') }}</mat-error>
+      </mat-form-field>
+    </div>
+</div>
+    <!-- Adicionando Membros da Família -->
+    
+    <button mat-button type="button" (click)="addFamilyMember()">Adicionar Membro da Família</button>
+    <!-- Membros da Família -->
+  <div formArrayName="compositionFamily" class="form__compFamily">
+  <div class="form__compFamily"  *ngFor="let familyMember of compositionFamilyControls; let i = index" [formGroupName]="i">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" name="name" />
+      <mat-error>{{ getErrorMessage('name') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sobrenome</mat-label>
+      <input matInput formControlName="surname" name="surname" />
+      <mat-error>{{ getErrorMessage('surname') }}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Idade</mat-label>
+      <input matInput formControlName="age" name="age" type="number"/>
+      <mat-error>{{ getErrorMessage('age') }}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Profissão</mat-label>
+      <input matInput formControlName="kinship" name="kinship" />
+      <mat-error>{{ getErrorMessage('kinship') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Profissão</mat-label>
+      <input matInput formControlName="profession" name="profession" />
+      <mat-error>{{ getErrorMessage('profession') }}</mat-error>
+    </mat-form-field>
+
+    <div>
+      <label for="statusHasincome">Possui Renda:</label>
+      <select formControlName="statusHasincome" id="statusHasincome" name="statusHasincome">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+        <mat-error>{{ getErrorMessage('statusHasincome') }}</mat-error>
+      </select>
+   
+    </div>
+
+    <!-- Tem renda -->
+    <div *ngIf="getFamilyMemberControl(i, 'statusHasincome')?.value === 'Sim'">
+      <mat-form-field>
+        <input matInput formControlName="valueHasincome" type="number" name="valueHasincome" placeholder="Valor da renda é obrigatório." required />
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+        <mat-error>{{ getErrorMessage('valueHasincome') }}</mat-error>
       </mat-form-field>
     </div>
 
-    
+    <div>
+      <label for="statusSpecialNeeds">Necessidades Especiais:</label>
+      <select formControlName="statusSpecialNeeds" id="statusSpecialNeeds" name="statusSpecialNeeds">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+        <mat-error>{{ getErrorMessage('statusSpecialNeeds') }}</mat-error>
+      </select>
+   
+    </div>
+
+    <!-- Qual Necessidades Especial -->
+    <div *ngIf="getFamilyMemberControl(i, 'statusSpecialNeeds')?.value === 'Sim'">
+      <mat-form-field>
+        <input matInput formControlName="whatDisability" placeholder="SE SIM, QUAL?" name="whatDisability" required />
+        <mat-error>{{ getErrorMessage('whatDisability') }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Botão de remoção de membro da família -->
+    <button mat-button type="button" (click)="removeFamilyMember(i)">Remover Membro da Família</button>
+  </div>
+</div>
+
+
+ 
+
+  <!-- Data de entrega da cesta básica -->
+  <mat-form-field>
+    <mat-label>Data de entrega da cesta básica</mat-label>
+    <input matInput [matDatepicker]="deliveryDatePicker" formControlName="basicBasketDeliveryDate" name="basicBasketDeliveryDate">
+    <mat-error>{{ getErrorMessage('basicBasketDeliveryDate') }}</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="deliveryDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <!-- Algum morador possui enfermidade -->
+  <div>
+    <label for="statusIllness">ALGUM MORADOR POSSUI INFERMIDADE:</label>
+    <select formControlName="statusIllness" id="statusIllness" name="statusIllness">
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+      <mat-error>{{ getErrorMessage('statusIllness') }}</mat-error>
+    </select>
+  
   </div>
 
+  <!-- Descrição da enfermidade -->
+  <div *ngIf="beneficiaryForm.get('statusIllness')?.value === 'Sim'">
+    <mat-form-field>
+      <input matInput formControlName="which" placeholder="QUAL ou QUAIS ?" name="which" required />
+      <mat-error>{{ getErrorMessage('which') }}</mat-error>
+    </mat-form-field>
+  </div>
+  <!-- Informações úteis e complementares -->
+  <mat-form-field>
+    <mat-label>Informações úteis e complementares?</mat-label>
+    <textarea matInput formControlName="additionalDetails" rows="4" name="additionalDetails" class="mat-input-element"></textarea>
+    <mat-error>{{ getErrorMessage('additionalDetails') }}</mat-error>
+  </mat-form-field>
+
+  <!-- Intrevistador -->
+  <mat-form-field>
+    <mat-label>Intrevistador</mat-label>
+    <input matInput formControlName="interviewer" name="interviewer" />
+    <mat-error>{{ getErrorMessage('interviewer') }}</mat-error>
+  </mat-form-field>
+
   <!-- Botão de envio -->
-  <button class="form__submit-button" type="submit">
-    Cadastrar Beneficiário
-  </button>
+  <button class="form__submit-button" type="submit" (click)="onSubmitBn()">Cadastrar Beneficiário</button>
 </form>

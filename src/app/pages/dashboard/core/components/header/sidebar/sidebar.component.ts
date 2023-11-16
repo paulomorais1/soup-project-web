@@ -1,11 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Menu } from '@pages/dashboard/model/menu.model';
 
 @Component({
   selector: 'app-dashboard-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardSidebarComponent {
   opened = true;
@@ -20,7 +25,6 @@ export class DashboardSidebarComponent {
   }
 
   menu: Menu = [
-  
     {
       title: 'Colaborador',
       icon: 'group_add',
@@ -28,13 +32,11 @@ export class DashboardSidebarComponent {
       subMenu: [
         {
           title: 'Cadastrar',
-          icon: 'person_add',
           link: '/dashboard/register-colaborador',
           color: '#ff7f0e',
         },
         {
           title: 'Customers',
-          icon: 'create',
           link: '/dashboard/colaborador-customers',
           color: '#ff7f0e',
         },
@@ -46,19 +48,16 @@ export class DashboardSidebarComponent {
       color: '#ff7f0e',
       subMenu: [
         {
-          title: 'Cadas',
-          icon: 'person_add',
+          title: 'Cadastrar',
           link: '/dashboard/register-beneficiary',
           color: '#ff7f0e',
         },
         {
           title: 'Customers',
-          icon: 'create',
           color: '#ff7f0e',
           link: '/dashboard/beneficiary-customers',
         },
       ],
     },
   ];
-
 }

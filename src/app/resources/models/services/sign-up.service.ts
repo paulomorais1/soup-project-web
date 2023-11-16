@@ -17,13 +17,12 @@ export class SignUpService {
   constructor(private httpClient: HttpClient,
     private authService: AuthService) {}
 
-  public onSubmit(requestCreate: IUser): Observable<any> {
+  public onSignUp(requestCreate: IUser): Observable<any> {
    
 
     return this.httpClient
       .post<ResponseLogin>(this.apiUrl, requestCreate)
-      .pipe(
-        tap((createResponse: ResponseLogin | undefined) => (this.authService.createResponse = createResponse))
+      .pipe(  tap((createResponse: ResponseLogin | undefined) => (this.authService.createResponse = createResponse))
       );
   }
 }

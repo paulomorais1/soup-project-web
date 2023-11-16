@@ -27,7 +27,7 @@ export class FormColaboradorComponent {
     });
   }
 
-  onSubmit(): void {
+  onSignUp(): void {
     if (this.userForm.valid) {
       // Criar instâncias de IAddress e TRole
       const address: IAddress = {
@@ -46,7 +46,7 @@ export class FormColaboradorComponent {
         isInterviewer: this.userForm.get('isInterviewer')?.value,
       };
 
-      this.signUp.onSubmit(requestCreate).subscribe(
+      this.signUp.onSignUp(requestCreate).subscribe(
         (response) => {
           console.log('Cadastro bem-sucedido:');
         },
