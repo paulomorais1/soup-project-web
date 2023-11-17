@@ -1,13 +1,44 @@
+@import 'variables';
 
-.spacer {
-    flex: 1 1 auto;
+.mat-toolbar {
+  color: $primary-color; // Assuming you have a $primary-color variable
+
+  button {
+    mat-icon {
+      color: $white-color; // Assuming you have a $white-color variable
+      font-size: 30px;
+      width: 30px;
+      height: 30px;
+
+      &:is([fontIcon='menu'],
+        [fontIcon='person_pin']) {
+        color: $primary-color;
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+      }
+    }
   }
 
   .title {
-    cursor: pointer;
-    color: #17B978;
+    color: $white-color; // Assuming you have a $white-color variable
+  }
+
+  .spacer {
+    flex: 1;
   }
 
   .welcome-text {
-    font-size: smaller;
+    color: $white-color; // Assuming you have a $white-color variable
   }
+
+  .mat-menu-item {
+    span {
+      color: $black-color; // Assuming you have a $black-color variable
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+}

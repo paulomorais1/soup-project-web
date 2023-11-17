@@ -1,3 +1,9 @@
+export class iFamilyReceivepension{
+ public statusPension: string | undefined;
+  
+ public valuePension: number | undefined;
+} 
+
 export class IAddress {
   public street: string | undefined;
   public city: string | undefined;
@@ -51,7 +57,7 @@ export interface IBeneficiary {
   name: string | undefined;
   surname: string | undefined;
   phoneNumber: string | undefined;
-  familyReceivepension: string | undefined
+  familyReceivepension: iFamilyReceivepension | undefined
   valuePension: number | undefined;
   rg: string | undefined;
   cpf: string | undefined;

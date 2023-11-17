@@ -1,3 +1,6 @@
+// Import your variables
+@import 'variables';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -13,17 +16,16 @@ mat-drawer {
   margin-left: 300px;
 }
 
-mat-drawer-container  {
-  min-height: calc( 100vh - 64px );
+mat-drawer-container {
+  min-height: calc(100vh - 64px);
 }
 
 ::ng-deep .mat-drawer-inner-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #ecececc2;
+  background: $white-color; // Assuming you have a $background-color variable
 }
-
 
 .center {
   display: flex;
@@ -32,9 +34,8 @@ mat-drawer-container  {
   height: 80vh;
 }
 
-
 .date-hour-content {
-  background: #3f51b538;
+  background: $primary-color + '38'; // Assuming you have a $primary-color variable
   text-align: center;
   padding: 10px 0;
 }

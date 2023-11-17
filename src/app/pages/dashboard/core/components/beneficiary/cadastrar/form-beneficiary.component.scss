@@ -1,61 +1,107 @@
+/* Importe suas variáveis aqui */
+@import 'variables';
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
+  gap: 0.5rem;
+  max-width: 750px;
   width: 100%;
-  margin: auto;
-  padding: 1rem; /* Added padding for better spacing */
+  margin: 0 auto;
+  padding: 1rem; /* Adicione um preenchimento opcional */
 
-  .form__half {
+  &__half,
+  &__half__option {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
 
-    padding: 1rem;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .form__compFamily {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.2rem;
-  
-    padding: 1rem;
+  &__submit-button,
+  .add-family-member-button {
+    color: $white-color; /* Substitua pela sua cor desejada */
+    background-color: $primary-color; /* Substitua pela sua cor desejada */
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding-block: 1rem;
+    transition: 300ms ease-out;
+    margin-top: auto; /* Isso empurra o botão para a parte inferior do contêiner */
 
-    .mat-form-field {
-      flex: 1;
-      margin-bottom: 0.75rem;
+    &:hover {
+      opacity: 0.8;
     }
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
 
     label {
+      display: block;
       margin-bottom: 0.5rem;
     }
 
-    select, input, textarea {
+    select {
+      width: max-content; /* Agora os selects ocupam a largura total */
+      margin-top: 0.2rem;
+    }
+
+    input,
+    textarea {
       width: 100%;
-      padding: 0.5rem;
-      box-sizing: border-box;
-    }
-
-    button {
-      color: #fff;
-      background-color: #007bff;
-      border: none;
-      text-transform: uppercase;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 0.75rem;
-      transition: background-color 300ms ease-out;
-
-      &:hover {
-        background-color: #0056b3;
-      }
     }
   }
 
-  @media (max-width: 768px) {
-    .form__half, .form__compFamily {
-      grid-template-columns: repeat(1, 1fr);
-    }
+  button.mat-button,
+  .add-family-member-button {
+    margin-top: 1rem;
+    width: 100%; /* Isso faz com que o botão ocupe a largura total do contêiner pai */
   }
+
+  .form__compFamily {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  
+  }
+
+  div[formGroupName="familyReceivepension"] label,
+  div[formGroupName="familyScholarship"] label,
+  div[formGroupName="receivePension"] label,
+  div[formGroupName="residentHasIllness"] label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  div[formGroupName="hasincome"] label,
+  div[formGroupName="specialNeeds"] label{
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+
+  div[formGroupName="familyReceivepension"] select,
+  div[formGroupName="familyScholarship"] select,
+  div[formGroupName="receivePension"] select,
+  div[formGroupName="residentHasIllness"] select {
+    width: 100%; /* Agora os selects ocupam a largura total */
+    margin-top: 0.2rem;
+  }
+
+  div[formGroupName="hasincome"] select,
+  div[formGroupName="specialNeeds"] select{
+    display: flex;
+    width: max-content;
+    margin-top: 0.2rem;
+  }
+
 }

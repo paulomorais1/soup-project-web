@@ -1,13 +1,25 @@
+// Import your variables
+@import 'variables';
+
 .mat-expansion-panel {
   box-shadow: none;
   background: transparent;
   display: flex;
   flex-direction: column;
-}
 
-.mat-expansion-panel-content.mat-expansion-panel-body {
-  display: flex;
-  flex-wrap: wrap;
+  .mat-expansion-panel-header {
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .mat-expansion-panel-content.mat-expansion-panel-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .mat-list-item {
@@ -16,10 +28,10 @@
   transition: 0.2s all;
   box-sizing: border-box;
   margin-right: 10px; /* Espaço entre os itens, ajuste conforme necessário */
-}
 
-.mat-list-item:hover {
-  background: rgba(0, 0, 0, 0.04);
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
 }
 
 .mat-list-base {
@@ -40,8 +52,8 @@
 }
 
 .active {
-  background: #94a5ff33 !important;
-  border-left: 4px solid #3f51b5;
- 
+  background: $primary-color + '33' !important;
+  border-left: 4px solid $primary-color;
 }
-/* Styles for submenu lines within app-menu-item component */
+
+

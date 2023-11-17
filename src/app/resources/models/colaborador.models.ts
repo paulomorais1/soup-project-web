@@ -1,5 +1,6 @@
 export class IAddress {
   public street: string | undefined;
+  public district: string | undefined;
   public city: string | undefined;
   public  zipCode: string | undefined;
   }

@@ -19,32 +19,27 @@
       <mat-label>Função:</mat-label>
       <input matInput formControlName="role" required />
     </mat-form-field>
-
-    <mat-form-field>
+    
+    <mat-form-field formGroupName="address">
       <mat-label>Endereço:</mat-label>
-      <input
-        matInput
-        formControlName="street"
-        placeholder="Rua"
-        required
-      />
+      <input matInput formControlName="street" placeholder="Rua" required />
     </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        formControlName="city"
-        placeholder="Cidade"
-        required
-      />
+    
+    <mat-form-field formGroupName="address">
+      <mat-label>Bairro:</mat-label>
+      <input matInput formControlName="district" placeholder="Bairro" required />
     </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        formControlName="zipCode"
-        placeholder="CEP"
-        required
-      />
+    
+    <mat-form-field formGroupName="address">
+      <mat-label>Cidade:</mat-label>
+      <input matInput formControlName="city" placeholder="Cidade" required />
     </mat-form-field>
+    
+    <mat-form-field formGroupName="address">
+      <mat-label>CEP:</mat-label>
+      <input matInput formControlName="zipCode" placeholder="CEP" required />
+    </mat-form-field>
+    
 
     <mat-form-field>
       <mat-label>Telefone:</mat-label>

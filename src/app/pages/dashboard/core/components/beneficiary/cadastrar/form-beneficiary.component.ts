@@ -2,6 +2,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { GetFieldErrorMessageService } from '@shared/services';
 
 import {
@@ -15,6 +20,7 @@ import {
   IHasincome,
   ISpecialNeeds,
   IResidentHasIllness,
+  iFamilyReceivepension,
 } from 'app/resources/models/create-beneficiary.models';
 import { BeneficiaryService } from 'app/resources/models/services/beneficiary-service';
 
@@ -28,6 +34,9 @@ export class BeneficiaryFormComponent {
   @ViewChild('deliveryDatePicker') dateOfBirthPicker!: MatDatepicker<any>;
   beneficiaryForm: FormGroup;
 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   get compositionFamilyControls() {
     return (this.beneficiaryForm.get('compositionFamily') as FormArray)
       .controls;
@@ -40,32 +49,46 @@ export class BeneficiaryFormComponent {
   constructor(
     private fb: FormBuilder,
     private beneficiaryService: BeneficiaryService,
-    private getFieldErrorMessageService: GetFieldErrorMessageService
+    private getFieldErrorMessageService: GetFieldErrorMessageService,
+    private matSnackBar: MatSnackBar
   ) {
     this.beneficiaryForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
       surname: ['', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
-      familyReceivepension: ['', Validators.required],
-      valuePension: [''],
+      familyReceivepension : this.fb.group({
+        statusPension: ['Não', Validators.required],
+        valuePension: ['', [Validators.pattern(/^\d+$/)]],
+      }),
       rg: ['', Validators.required],
       cpf: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      district: ['', Validators.required],
-      housingCondition: ['', Validators.required],
-      value: ['', Validators.required],
+      address: this.fb.group({
+        street: ['', Validators.required],
+        district: ['', Validators.required],
+        city: ['', Validators.required],
+        zipCode: ['', Validators.required],
+      }),
+      home: this.fb.group({
+        housingCondition: ['Não', Validators.required],
+        value: ['', Validators.required],
+      }),
       professionFamilyresponsible: [null, Validators.required],
-      familyStatus: ['', Validators.required],
-      familyValue: [''],
-      statusPension: ['', Validators.required],
-      valueReceive: [''],
+      familyScholarship: this.fb.group({
+        familyStatus: ['Não', Validators.required],
+        familyValue: ['', [Validators.pattern(/^\d+$/)]],
+
+      }),
+      receivePension: this.fb.group({
+        statusPension: ['Não', Validators.required],
+        valueReceive: ['', [Validators.pattern(/^\d+$/)]],
+      }),
       compositionFamily: this.fb.array([this.createFamilyMember()]),
       basicBasketDeliveryDate: ['', Validators.required],
-      statusIllness: ['', Validators.required],
-      which: ['', [Validators.required]],
+      residentHasIllness: this.fb.group({
+        statusIllness: ['Não', Validators.required],
+        which: [''],
+      }),
       additionalDetails: ['', Validators.required],
       interviewer: [false],
     });
@@ -85,10 +108,14 @@ export class BeneficiaryFormComponent {
       kinship: ['', Validators.required],
       age: ['', Validators.required],
       profession: ['', Validators.required],
-      statusHasincome: [''],
-      valueHasincome: [''],
-      statusSpecialNeeds: ['', Validators.required],
-      whatDisability: [''],
+      hasincome: this.fb.group({
+        statusHasincome: [''],
+        valueHasincome: [''],
+      }),
+      specialNeeds: this.fb.group({
+        statusSpecialNeeds: ['', Validators.required],
+        whatDisability: [''],
+      }),
     });
   }
 
@@ -100,17 +127,31 @@ export class BeneficiaryFormComponent {
   }
 
   getErrorMessage(fieldName: string) {
-    return this.getFieldErrorMessageService.getErrorMessage(fieldName, this.beneficiaryForm);
+    return this.getFieldErrorMessageService.getErrorMessage(
+      fieldName,
+      this.beneficiaryForm
+    );
   }
 
+  showToast(message: string) {
+    this.matSnackBar.open(message, 'Fechar', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
   onSubmitBn(): void {
-    
     if (this.beneficiaryForm.valid) {
+      const familyReceivepension: iFamilyReceivepension = {
+        statusPension: this.beneficiaryForm.get('familyReceivepension.statusPension')?.value,
+        valuePension: this.beneficiaryForm.get('familyReceivepension.valuePension')?.value,
+      
+      }; 
+
       const address: IAddress = {
-        street: this.beneficiaryForm.get('street')?.value,
-        city: this.beneficiaryForm.get('city')?.value,
-        zipCode: this.beneficiaryForm.get('zipCode')?.value,
-        district: this.beneficiaryForm.get('district')?.value,
+        street: this.beneficiaryForm.get('address.street')?.value,
+        city: this.beneficiaryForm.get('address.city')?.value,
+        zipCode: this.beneficiaryForm.get('address.zipCode')?.value,
+        district: this.beneficiaryForm.get('address.district')?.value,
       };
 
       const housingCondition: IHousingCondition = this.beneficiaryForm.get(
@@ -118,17 +159,17 @@ export class BeneficiaryFormComponent {
       )?.value as IHousingCondition;
 
       const home: IHome = {
-        housingCondition: this.beneficiaryForm.get('housingCondition')?.value,
-        value: this.beneficiaryForm.get('value')?.value,
+        housingCondition: this.beneficiaryForm.get('home.housingCondition')?.value,
+        value: this.beneficiaryForm.get('home.value')?.value,
       };
 
       const familyScholarship: IFamilyScholarship = {
-        familyStatus: this.beneficiaryForm.get('familyStatus')?.value,
-        familyValue: this.beneficiaryForm.get('familyValue')?.value,
+        familyStatus: this.beneficiaryForm.get('familyScholarship.familyStatus')?.value,
+        familyValue: this.beneficiaryForm.get('familyScholarship.familyValue')?.value,
       };
       const receivePension: IReceivePension = {
-        statusPension: this.beneficiaryForm.get('statusPension')?.value,
-        valueReceive: this.beneficiaryForm.get('valueReceive')?.value,
+        statusPension: this.beneficiaryForm.get('receivePension.statusPension')?.value,
+        valueReceive: this.beneficiaryForm.get('receivePension.valueReceive')?.value,
       };
 
       const compositionFamily: ICompositionFamily[] = this.beneficiaryForm.get(
@@ -136,19 +177,20 @@ export class BeneficiaryFormComponent {
       )?.value as ICompositionFamily[];
 
       const residentHasIllness: IResidentHasIllness = {
-        statusIllness: this.beneficiaryForm.get('statusIllness')?.value,
-        which: this.beneficiaryForm.get('which')?.value,
+        statusIllness: this.beneficiaryForm.get('residentHasIllness.statusIllness')?.value,
+        which: this.beneficiaryForm.get('residentHasIllness.which')?.value,
       };
       const hasincome: IHasincome = {
-        statusHasincome: this.beneficiaryForm.get('status')?.value,
-        valueHasincome: this.beneficiaryForm.get('value')?.value,
+        statusHasincome: this.beneficiaryForm.get('hasincome.statusHasincome')?.value,
+        valueHasincome: this.beneficiaryForm.get('hasincome.valueHasincome')?.value,
       };
       const specialNeeds: ISpecialNeeds = {
-        statusSpecialNeeds: this.beneficiaryForm.get('status')?.value,
-        whatDisability: this.beneficiaryForm.get('whatDisability')?.value,
+        statusSpecialNeeds: this.beneficiaryForm.get('specialNeeds.statusSpecialNeeds')?.value,
+        whatDisability: this.beneficiaryForm.get('specialNeeds.whatDisability')?.value,
       };
       const requestCreate: IBeneficiary = {
         ...this.beneficiaryForm.value,
+        familyReceivepension,
         address,
         home,
         housingCondition,
@@ -163,8 +205,7 @@ export class BeneficiaryFormComponent {
 
       this.beneficiaryService.onSubmitBn(requestCreate).subscribe(
         (response) => {
-          console.log('Resposta do backend:', response);
-          console.log('Cadastro bem-sucedido:', response);
+          this.showToast('Cadastrado com sucesso!');
         },
         (error) => {
           console.error('Erro ao cadastrar:', error);
@@ -173,7 +214,7 @@ export class BeneficiaryFormComponent {
               'Usuário já existe. Lidar com isso conforme necessário.'
             );
           } else {
-            console.error('Erro ao cadastrar:', error);
+            this.showToast('Mensagem não enviada. Tente novamente mais tarde!');
           }
         }
       );
@@ -191,3 +232,4 @@ export class BeneficiaryFormComponent {
     }
   }
 }
+

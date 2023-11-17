@@ -17,9 +17,12 @@ export class FormColaboradorComponent {
       surname: ['', Validators.required],
       sector: ['', Validators.required],
       role: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      address: this.fb.group({
+        street: ['', Validators.required],
+        district: ['', Validators.required],
+        city: ['', Validators.required],
+        zipCode: ['', Validators.required],
+      }),
       phone: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -31,9 +34,10 @@ export class FormColaboradorComponent {
     if (this.userForm.valid) {
       // Criar instâncias de IAddress e TRole
       const address: IAddress = {
-        street: this.userForm.get('street')?.value,
-        city: this.userForm.get('city')?.value,
-        zipCode: this.userForm.get('zipCode')?.value,
+        street: this.userForm.get('address.street')?.value,
+        district: this.userForm.get('address.district')?.value,
+        city: this.userForm.get('address.city')?.value,
+        zipCode: this.userForm.get('address.zipCode')?.value,
       };
 
       const role: TRole = this.userForm.get('role')?.value as TRole;
