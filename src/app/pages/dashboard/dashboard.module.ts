@@ -25,6 +25,11 @@ import { BeneficiaryFormComponent } from './core/components/beneficiary/cadastra
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BeneficiaryListComponent } from './core/components/beneficiary/list of beneficiaries/list-beneficiaries.component';
+import { MatTableModule } from '@angular/material/table';
+import { ListBeneficiaryComponent } from './core/components/beneficiary/list-all.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GetAllBeneficiaryService } from 'app/resources/models/services/beneficiaries/get-all/getAll-beneficiary.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ColaboradorComponent,
     FormColaboradorComponent,
     BeneficiaryFormComponent,
+    BeneficiaryListComponent,
+    ListBeneficiaryComponent
+    
   ],
   imports: [
     CommonModule,
@@ -56,7 +64,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatDialogModule
   ],
+  providers:[GetAllBeneficiaryService]
 })
 export class DashboardModule {}

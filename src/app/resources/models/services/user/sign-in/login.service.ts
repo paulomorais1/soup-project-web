@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { RequestLogin } from '../RequestLogin';
-import { ResponseLogin } from '../ResponseLogin';
 import { AuthService } from 'app/resources/auth.service';
+import { ResponseLogin } from 'app/resources/models/ResponseLogin';
+import { RequestLogin } from 'app/resources/models/RequestLogin';
+
 
 @Injectable({
   providedIn: 'root',

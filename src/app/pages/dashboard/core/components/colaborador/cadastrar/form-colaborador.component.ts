@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SignUpService } from 'app/resources/models/services/sign-up.service';
-import { IUser, IAddress, TRole } from 'app/resources/models/colaborador.models';
+import { SignUpService } from 'app/resources/models/services/user/create/sign-up.service';
+import { IUser, IAddress, TRole } from 'app/resources/models/user.models';
 
 @Component({
   selector: 'app-form-colaborador',
@@ -56,13 +56,14 @@ export class FormColaboradorComponent {
         },
         (error) => {
           if (error.status === 409) {
-            console.warn('Usuário já existe. Lidar com isso conforme necessário.');
+            console.warn(
+              'Usuário já existe. Lidar com isso conforme necessário.'
+            );
           } else {
             console.error('Erro ao cadastrar:', error);
           }
         }
       );
-      
     } else {
       console.error('Formulário inválido. Verifique os campos.');
     }

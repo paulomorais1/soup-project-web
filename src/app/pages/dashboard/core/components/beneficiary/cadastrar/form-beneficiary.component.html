@@ -1,4 +1,4 @@
-<form [formGroup]="beneficiaryForm" class="form" (ngSubmit)="onSubmitBn()">
+<form [formGroup]="beneficiaryForm" class="form" (ngSubmit)="SubmitCreate()">
   <!-- Primeira metade dos campos -->
   <div class="form__half">
     <mat-form-field>
@@ -457,7 +457,7 @@
   </mat-form-field>
 
   <!-- Botão de envio -->
-  <button class="form__submit-button" type="submit" (click)="onSubmitBn()">
+  <button class="form__submit-button" type="submit" (click)="SubmitCreate()">
     Cadastrar Beneficiário
   </button>
 </form>

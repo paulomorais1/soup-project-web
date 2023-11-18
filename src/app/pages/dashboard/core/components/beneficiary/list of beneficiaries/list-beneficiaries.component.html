@@ -1,0 +1,25 @@
+<div class="mat-elevation-z8">
+  <!-- Mat-table para exibir os beneficiários -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Define suas colunas aqui -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }} </th>
+      <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+    </ng-container>
+
+    <!-- Definições de linha para cabeçalho e linhas de dados -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Exibir mensagem de erro se ocorrer algum erro -->
+  <div *ngIf="loadingError">
+    Erro ao carregar beneficiários. Por favor, tente novamente mais tarde.
+  </div>
+
+  <!-- Exibir mensagem se não houver dados disponíveis -->
+  <div *ngIf="dataSource.data.length === 0 && !loadingError">
+    Nenhum dado disponível.
+  </div>
+</div>

@@ -5,6 +5,7 @@ import {
   Output,
 } from '@angular/core';
 import { Menu } from '@pages/dashboard/model/menu.model';
+import { IUser } from 'app/resources/models/user.models';
 
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -19,7 +20,7 @@ export class DashboardSidebarComponent {
   toggle(): void {
     this.opened = !this.opened;
   }
-
+  user!: IUser;
   onItemClick(link: string): void {
     this.menuItemClicked.emit(link);
   }
@@ -48,14 +49,14 @@ export class DashboardSidebarComponent {
       color: '#ff7f0e',
       subMenu: [
         {
-          title: 'Cadastrar',
-          link: '/dashboard/register-beneficiary',
+          title: 'Listar-Todos',
+          link: '/dashboard/getAll-beneficiary',
           color: '#ff7f0e',
         },
         {
-          title: 'Customers',
+          title: 'Cadastrar',
+          link: '/dashboard/register-beneficiary',
           color: '#ff7f0e',
-          link: '/dashboard/beneficiary-customers',
         },
       ],
     },

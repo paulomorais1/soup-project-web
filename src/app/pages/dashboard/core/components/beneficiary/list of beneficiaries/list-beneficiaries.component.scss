@@ -1,0 +1,30 @@
+@import 'variables';
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th.mat-header-cell, td.mat-cell {
+    text-align: left;
+    padding: 12px;
+    font-size: 1rem;
+    border-bottom: 1px solid $secondary-color; // Substitua por sua cor desejada
+  }
+
+  th.mat-header-cell {
+    background-color: $secondary-color;
+    color: #fff; // Cor do texto no cabeçalho
+  }
+
+  tr.mat-row {
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $secondary-color; // Substitua por sua cor desejada
+    }
+  }
+
+  .mat-header-row, .mat-row {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); // Efeito de sombra
+  }
+}

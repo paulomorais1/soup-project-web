@@ -16,6 +16,13 @@ export class AuthService {
   public clear(): void {
     this.loginResponse = undefined;
   }
+ 
+// Método para obter o nome do usuário
+getUserName(): string | null {
+  const name = this.loginResponse ? this.loginResponse.body?.user || null : null;
+ 
+  return name;
+}
 
 
   public isAuthenticated(): boolean {

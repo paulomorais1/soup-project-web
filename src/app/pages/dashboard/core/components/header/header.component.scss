@@ -19,7 +19,9 @@
       }
     }
   }
-
+  .name {
+    margin-left: 5px; /* ajuste a margem conforme necessário */
+  }
   .title {
     color: $white-color; // Assuming you have a $white-color variable
   }

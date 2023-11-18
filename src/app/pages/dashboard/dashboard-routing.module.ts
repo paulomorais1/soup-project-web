@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { BeneficiaryComponent } from './core/components/beneficiary/beneficiary.component';
 import { ColaboradorComponent } from './core/components/colaborador/colaborador.component';
+import { ListBeneficiaryComponent } from './core/components/beneficiary/list-all.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: 'register-colaborador',
         component: ColaboradorComponent,
+      },
+      {
+        path: 'getAll-beneficiary',
+        component: ListBeneficiaryComponent,
       },
       {
         path: 'register-beneficiary',

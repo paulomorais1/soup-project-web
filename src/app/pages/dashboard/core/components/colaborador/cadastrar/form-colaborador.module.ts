@@ -1,7 +1,7 @@
 // form-colaborador.component.ts
 
 import { Component, Input } from '@angular/core';
-import { IUser } from 'app/resources/models/colaborador.models';
+import { IUser } from 'app/resources/models/user.models';
 
 @Component({
   selector: 'app-form-colaborador',
