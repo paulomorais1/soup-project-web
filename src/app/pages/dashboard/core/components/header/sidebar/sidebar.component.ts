@@ -33,6 +33,8 @@ export class DashboardSidebarComponent {
       subMenu: [
         {
           title: 'Cadastrar',
+          icon: 'group_add',
+
           link: '/dashboard/register-colaborador',
           color: '#ff7f0e',
         },
@@ -50,6 +52,8 @@ export class DashboardSidebarComponent {
       subMenu: [
         {
           title: 'Listar-Todos',
+          icon: 'group_add',
+
           link: '/dashboard/getAll-beneficiary',
           color: '#ff7f0e',
         },

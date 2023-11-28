@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { IBeneficiary } from 'app/resources/models/beneficiary.models';
+import { IBeneficiary, IAddress } from 'app/resources/models/beneficiary.models';
 import { MatTableDataSource } from '@angular/material/table';
 import { BeneficiaryDetailsModalComponent } from './modal/beneficiary-details-modal.component';
 import { catchError } from 'rxjs/operators';
@@ -14,7 +13,8 @@ import { GetAllBeneficiaryService } from 'app/resources/models/services/benefici
 })
 export class BeneficiaryListComponent implements OnInit {
   // Colunas a serem exibidas na tabela
-  displayedColumns: string[] = ['name', 'phoneNumber', 'dateOfBirth', 'street', 'details'];
+  displayedColumns: string[] = ['name', 'phoneNumber', 'dateOfBirth', 'address.street' , 'address.district'  ,'address.zipCode'  , 'details'];
+
 
   // Flag para controle de erro durante o carregamento
   loadingError: boolean = false;
@@ -40,25 +40,31 @@ export class BeneficiaryListComponent implements OnInit {
     this.beneficiaryService.getAllBeneficiaries().pipe(
       catchError((error) => {
         console.error('Erro ao buscar beneficiários:', error);
-        
+
         // Atualizar a flag de erro
         this.loadingError = true;
-        
+
         // Propagar o erro para ser tratado em níveis superiores
         throw error;
       })
     ).subscribe(
-      (beneficiaries: IBeneficiary[]) => {
+      (result: any) => {
+        console.log(result, 'result início');
+
+        // Certifique-se de que 'body' existe antes de acessá-lo
+        const beneficiaries = result.body ? result.body as IBeneficiary[] : [];
+
         console.log('Beneficiários recebidos:', beneficiaries);
+
         this.dataSource.data = beneficiaries;
         this.loadingError = false;
-        
+        console.log('Dados recebidos no componente:', result);
         console.log('Beneficiários no componente:', this.dataSource.data);
       },
       (error) => {
         // Tratamento de erro durante a subscrição
         console.error('Erro ao carregar beneficiários:', error);
-        
+
         // Atualizar a flag de erro
         this.loadingError = true;
       }
@@ -75,4 +81,42 @@ export class BeneficiaryListComponent implements OnInit {
       // Lógica a ser executada após o fechamento do modal, se necessário
     });
   }
+
+
+
+getColumnValue(element: IBeneficiary, column: string): any {
+  // Verifique se o elemento e a coluna são válidos
+  if (!element || !column) {
+    console.error('Elemento ou coluna inválidos:', element, column);
+    return '';
+  }
+
+  // Divide a coluna em partes usando '.' como delimitador
+  const columnParts = column.split('.');
+
+  // Comece com o elemento principal
+  let value: any = element;
+
+  // Itera sobre as partes da coluna para acessar propriedades aninhadas
+  for (const prop of columnParts) {
+    // Verifica se a propriedade existe antes de acessá-la
+    if (value && value.hasOwnProperty(prop)) {
+      // Atualiza o valor para a próxima propriedade
+      value = value[prop];
+    } else {
+      // Se a propriedade não existir, define o valor como vazio e sai do loop
+      value = '';
+      console.error('Propriedade não encontrada:', prop, 'em', column, 'para', element);
+      break;
+    }
+  }
+
+  console.log('Valor obtido para', column, ':', value);
+
+  return value;
+}
+
+// ...
+
+
 }

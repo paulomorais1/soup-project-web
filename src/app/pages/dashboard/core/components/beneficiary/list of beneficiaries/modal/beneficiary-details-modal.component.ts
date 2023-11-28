@@ -8,5 +8,11 @@ import { IBeneficiary } from 'app/resources/models/beneficiary.models';
   templateUrl: './beneficiary-details-modal.component.html',
 })
 export class BeneficiaryDetailsModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: IBeneficiary) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: IBeneficiary,
+) {}
+
+ 
+  getJsonData(): string {
+    return JSON.stringify(this.data, null, 2); // O segundo parâmetro (null) são os replacers e o terceiro (2) é o espaço de recuo para formatação.
+  }
 }

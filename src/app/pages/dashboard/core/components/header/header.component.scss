@@ -1,7 +1,8 @@
 @import 'variables';
 
 .mat-toolbar {
-  color: $primary-color; // Assuming you have a $primary-color variable
+  background-color: $primary-color;
+  color:#17B978; // Assuming you have a $primary-color variable
 
   button {
     mat-icon {
@@ -12,7 +13,7 @@
 
       &:is([fontIcon='menu'],
         [fontIcon='person_pin']) {
-        color: $primary-color;
+        color: #17B978;
         font-size: 25px;
         width: 25px;
         height: 25px;

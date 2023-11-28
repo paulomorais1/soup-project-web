@@ -10,6 +10,21 @@
 mat-drawer {
   min-width: 200px;
   max-width: 300px;
+
+  // Add styling for the drawer content
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $white-color; // Assuming you have a $background-color variable
+
+    // Add styling for the date-hour-content
+    .date-hour-content {
+      background: $primary-color + '38'; // Assuming you have a $primary-color variable
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
 }
 
 .margin-left {
@@ -20,13 +35,6 @@ mat-drawer-container {
   min-height: calc(100vh - 64px);
 }
 
-::ng-deep .mat-drawer-inner-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: $white-color; // Assuming you have a $background-color variable
-}
-
 .center {
   display: flex;
   align-items: center;
@@ -34,8 +42,4 @@ mat-drawer-container {
   height: 80vh;
 }
 
-.date-hour-content {
-  background: $primary-color + '38'; // Assuming you have a $primary-color variable
-  text-align: center;
-  padding: 10px 0;
-}
+// Add more styles as needed for your specific components

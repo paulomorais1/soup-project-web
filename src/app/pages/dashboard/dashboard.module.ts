@@ -1,6 +1,6 @@
 // dashboard.module.ts
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ListBeneficiaryComponent } from './core/components/beneficiary/list-all.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GetAllBeneficiaryService } from 'app/resources/models/services/beneficiaries/get-all/getAll-beneficiary.service';
+import { BeneficiaryDetailsModalComponent } from './core/components/beneficiary/list of beneficiaries/modal/beneficiary-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GetAllBeneficiaryService } from 'app/resources/models/services/benefici
     FormColaboradorComponent,
     BeneficiaryFormComponent,
     BeneficiaryListComponent,
-    ListBeneficiaryComponent
+    ListBeneficiaryComponent,
+    BeneficiaryDetailsModalComponent
     
   ],
   imports: [
@@ -68,6 +70,7 @@ import { GetAllBeneficiaryService } from 'app/resources/models/services/benefici
     MatTableModule,
     MatDialogModule
   ],
-  providers:[GetAllBeneficiaryService]
+  providers:[GetAllBeneficiaryService,
+    JsonPipe,]
 })
 export class DashboardModule {}

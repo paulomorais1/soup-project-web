@@ -14,6 +14,19 @@
     &:hover {
       background: rgba(0, 0, 0, 0.04);
     }
+
+    mat-panel-title {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-right: 8px; // Adjust the margin as needed
+      }
+
+      .list-item {
+        margin-left: 8px; // Adjust the margin as needed
+      }
+    }
   }
 
   .mat-expansion-panel-content.mat-expansion-panel-body {
@@ -55,5 +68,3 @@
   background: $primary-color + '33' !important;
   border-left: 4px solid $primary-color;
 }
-
-

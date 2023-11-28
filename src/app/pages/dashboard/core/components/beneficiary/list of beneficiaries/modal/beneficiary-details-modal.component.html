@@ -1,14 +1,17 @@
 <!-- beneficiary-details-modal.component.html -->
 <div>
-    <h2>Detalhes do Beneficiário</h2>
-    
-    <!-- Adicione aqui os detalhes adicionais que deseja exibir -->
-    <p><strong>Nome:</strong> {{ data.name }} {{ data.surname }}</p>
-    <p><strong>Telefone:</strong> {{ data.phoneNumber }}</p>
-    <p><strong>Data de Nascimento:</strong> {{ data.dateOfBirth }}</p>
-    <p><strong>Endereço:</strong> {{ data.address?.street }}, {{ data.address?.city }}</p>
+  <h2>Detalhes do Beneficiário</h2>
   
-    <!-- Adicione mais detalhes conforme necessário -->
+  <!-- Adicione aqui os detalhes adicionais que deseja exibir -->
+  <p><strong>Nome:</strong> {{ data.name }} {{ data.surname }}</p>
+  <p><strong>Telefone:</strong> {{ data.phoneNumber }}</p>
+  <p><strong>Data de Nascimento:</strong> {{ data.dateOfBirth | date: 'dd/MM/yyyy' }}</p>
   
+  <!-- Exibindo informações de address -->
+  <div *ngIf="data.address">
+    <p><strong>Endereço:</strong> {{ data.address.street }}, {{ data.address.city }}, {{ data.address.zipCode }}, {{ data.address.district }}</p>
   </div>
-  
+
+  <!-- Adicione mais detalhes conforme necessário -->
+
+</div>
