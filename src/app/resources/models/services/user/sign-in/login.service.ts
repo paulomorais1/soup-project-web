@@ -5,7 +5,6 @@ import { AuthService } from 'app/resources/auth.service';
 import { ResponseLogin } from 'app/resources/models/ResponseLogin';
 import { RequestLogin } from 'app/resources/models/RequestLogin';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +17,7 @@ export class LoginService {
   public doLogin(requestLogin: RequestLogin): Observable<ResponseLogin> {
     return this.httpClient
       .post<ResponseLogin>(
-        'https://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in',
+        'http://localhost:8080/api/v1/auth/user/sign-in',
         requestLogin
       )
       .pipe(
@@ -26,5 +25,3 @@ export class LoginService {
       );
   }
 }
-
-
