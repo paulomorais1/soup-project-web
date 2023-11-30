@@ -9,7 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class GetAllBeneficiaryService {
-  private apiUrl = 'https://soup-project-backend-production.up.railway.app/api/v1/beneficiary/get-all';
+  private apiUrl = 'https://soup-project-backend-prod.up.railway.app/api/v1/beneficiary/get-all';
 
   constructor(
     private httpClient: HttpClient,
