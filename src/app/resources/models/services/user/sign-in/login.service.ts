@@ -17,7 +17,7 @@ export class LoginService {
   public doLogin(requestLogin: RequestLogin): Observable<ResponseLogin> {
     return this.httpClient
       .post<ResponseLogin>(
-        'https://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in',
+        'http://localhost:8080/api/v1/auth/user/sign-in',
         requestLogin
       )
       .pipe(
