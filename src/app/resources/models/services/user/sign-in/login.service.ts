@@ -18,7 +18,7 @@ export class LoginService {
     // Use HTTPS instead of HTTP
     return this.httpClient
       .post<ResponseLogin>(
-        'https://soup-project-backend-product.up.railway.app/api/v1/auth/user/sign-in',
+        'http://soup-project-backend-product.up.railway.app/api/v1/auth/user/sign-in',
         requestLogin
       )
       .pipe(
