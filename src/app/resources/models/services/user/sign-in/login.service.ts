@@ -16,7 +16,7 @@ export class LoginService {
 
   public doLogin(requestLogin: RequestLogin): Observable<ResponseLogin> {
     // Use HTTPS instead of HTTP
-    const apiUrl = 'https://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in';
+    const apiUrl = 'http://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in';
 
     console.log(`Trying to login to: ${apiUrl}`);
 
