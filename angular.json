@@ -82,12 +82,13 @@
               "browserTarget": "soup-project-web:build:production"
             },
             "development": {
-              "browserTarget": "soup-project-web:build:development"
+              "browserTarget": "soup-project-web:build:development",
+              "ssl": true,
+              "protocol": "https"
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
+       },"extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "soup-project-web:build"
