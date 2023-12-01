@@ -16,14 +16,20 @@ export class LoginService {
 
   public doLogin(requestLogin: RequestLogin): Observable<ResponseLogin> {
     // Use HTTPS instead of HTTP
+    const apiUrl = 'https://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in';
+
+    console.log(`Trying to login to: ${apiUrl}`);
+
     return this.httpClient
-      .post<ResponseLogin>(
-        'https://soup-project-backend-production.up.railway.app/api/v1/auth/user/sign-in',
-        requestLogin,
-        { withCredentials: true }
-      )
+      .post<ResponseLogin>(apiUrl, requestLogin, { withCredentials: true })
       .pipe(
-        tap((loginResponse) => (this.authService.loginResponse = loginResponse))
+        tap(
+          (loginResponse) => {
+            console.log('Login successful', loginResponse);
+            this.authService.loginResponse = loginResponse;
+          },
+          (error) => console.error('Login failed', error)
+        )
       );
   }
 }
