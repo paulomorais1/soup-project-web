@@ -10,7 +10,7 @@ import { IUser } from 'app/resources/models/user.models';
   providedIn: 'root',
 })
 export class SignUpService {
-  private apiUrl = 'http://soup-project-backend-product.up.railway.app/api/v1/auth/user/create';
+  private apiUrl = 'https://soup-project-backend-product.up.railway.app/api/v1/auth/user/create';
 
   constructor(
     private httpClient: HttpClient,
