@@ -6,7 +6,14 @@
   <form class="form" [formGroup]="formGroup" (ngSubmit)="doLogin()">
     <mat-form-field color="accent" hideRequiredMarker="true">
       <mat-label>Celular:</mat-label>
-      <input matInput [(ngModel)]="requestLogin.phone" formControlName="phone" />
+
+      <input
+        matInput
+        [(ngModel)]="requestLogin.phone"
+        formControlName="phone"
+        mask="(00) 0 0000 0000"
+      />
+
       <mat-error class="form__error-message">{{
         getErrorMessage("phone")
       }}</mat-error>
@@ -22,17 +29,15 @@
       <mat-error class="form__error-message">{{
         getErrorMessage("password")
       }}</mat-error>
-      <button
+       <button
         type="button"
         mat-icon-button
         matSuffix
         (click)="onToggleShowPassword()"
       >
-        <mat-icon>{{
-          showPassword ? "visibility_off" : "visibility"
-        }}</mat-icon>
+        <mat-icon>{{ showPassword ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
-    <button class="form__submit-button" (click)="doLogin" mat-button type="submit">Entrar</button>
+    <button class="form__submit-button" mat-button type="submit">Entrar</button>
   </form>
 </section>

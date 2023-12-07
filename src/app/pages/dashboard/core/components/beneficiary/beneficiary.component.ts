@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     <app-page-header icon="person_add">
       <h2>Cadastrar Benficiario </h2>
 
-      <button routerLink="/dashboard/register-colaborador" mat-flat-button color="primary" class="action">
+      <button routerLink="/dashboard/getAll-beneficiary" mat-flat-button color="primary" class="action">
         <mat-icon class="mr-2">home</mat-icon>
-        <span>Go Colaborador</span>
+        <span color="primary">Go listar Beneficiário</span>
       </button>
     </app-page-header>
 

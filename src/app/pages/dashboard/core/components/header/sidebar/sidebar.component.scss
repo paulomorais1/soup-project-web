@@ -43,3 +43,20 @@ mat-drawer-container {
 }
 
 // Add more styles as needed for your specific components
+
+// Media query for screens smaller than 900px
+@media (max-width: 900px) {
+  mat-drawer {
+    // Set the max-width to 0 to hide the drawer on smaller screens
+    max-width: 0;
+  }
+
+  .margin-left {
+    margin-left: 0;
+  }
+
+  // Style to show the drawer when it's opened
+  mat-drawer[opened="true"] {
+    max-width: 300px;
+  }
+}
