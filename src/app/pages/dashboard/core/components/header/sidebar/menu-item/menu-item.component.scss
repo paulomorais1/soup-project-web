@@ -1,6 +1,4 @@
-// Import your variables
-@import 'variables';
-
+// Estilos globais para o componente
 .mat-expansion-panel {
   box-shadow: none;
   background: transparent;
@@ -8,23 +6,26 @@
   flex-direction: column;
 
   .mat-expansion-panel-header {
-    padding: 0.8rem 2rem;
+    padding: 0.5rem 1rem; // Padding menor para os cabeçalhos
     cursor: pointer;
 
     &:hover {
       background: rgba(0, 0, 0, 0.04);
     }
 
-    mat-panel-title {
+    .mat-panel-title {
       display: flex;
       align-items: center;
+      justify-content: space-between; // Distribuir espaço entre o ícone e o texto
 
       mat-icon {
-        margin-right: 8px; // Adjust the margin as needed
+        margin-right: 8px;
       }
 
       .list-item {
-        margin-left: 8px; // Adjust the margin as needed
+        margin-left: 8px;
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -33,38 +34,46 @@
     display: flex;
     flex-wrap: wrap;
   }
-}
 
-.mat-list-item {
-  cursor: pointer;
-  border-left: 4px solid transparent;
-  transition: 0.2s all;
-  box-sizing: border-box;
-  margin-right: 10px; /* Espaço entre os itens, ajuste conforme necessário */
+  // Estilização específica para submenus
+  .mat-expansion-panel-header.submenu .mat-panel-title .list-item.submenu-title {
+    // Estilos específicos para o título do submenu
+    padding-left: 16px; // Ajuste conforme necessário
+    border: 2px solid red;
+  }
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
+  // Outros estilos globais...
+
+  // Estilos responsivos para telas pequenas
+  @media screen and (max-width: 900px) {
+    .mat-expansion-panel-header {
+      padding: 0.5rem 0.5rem; // Ajustar o padding para telas menores
+    }
+
+    .mat-expansion-panel-content.mat-expansion-panel-body .mat-expansion-panel-header.submenu {
+      padding: 0.5rem 0.5rem; // Ajustar o padding para telas menores nos submenus
+    }
+
+    .mat-expansion-panel-header.submenu .mat-panel-title,
+    .mat-expansion-panel-header.submenu .list-item {
+      font-size: 0.875em; // Ajustar o tamanho da fonte para telas menores (14px / 16px)
+      padding-left: 12px; // Ajustar o padding para telas menores
+      flex-direction: column; // Empilhar título e ícone verticalmente para telas menores nos submenus
+    }
   }
 }
+.submenu-panel {
+  /* Adicione estilos específicos para o painel de expansão do submenu, se necessário */
+  display: flex;
 
-.mat-list-base {
-  padding-top: 0;
 }
 
-.mat-list-base .mat-list-item {
-  height: 50px;
+.submenu-header {
+  background-color: #f0f0f0;
+  padding: 8px;
 }
 
-.list-item {
-  font-size: 16px;
-  padding-left: 16px;
-}
-
-.mat-line {
-  white-space: normal !important;
-}
-
-.active {
-  background: $primary-color + '33' !important;
-  border-left: 4px solid $primary-color;
+.list-item.submenu-title {
+  margin-left: 8px;
+  /* Adicione estilos adicionais para o texto do submenu, se necessário */
 }

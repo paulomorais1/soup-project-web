@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ListBeneficiaryComponent } from './core/components/beneficiary/list-all.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GetAllBeneficiaryService } from 'app/resources/models/services/beneficiaries/get-all/getAll-beneficiary.service';
+
 import { BeneficiaryDetailsModalComponent } from './core/components/beneficiary/list of beneficiaries/modal/beneficiary-details-modal.component';
 
 @NgModule({
@@ -68,9 +69,11 @@ import { BeneficiaryDetailsModalComponent } from './core/components/beneficiary/
     MatNativeDateModule,
     MatSnackBarModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+
   ],
   providers:[GetAllBeneficiaryService,
+  
     JsonPipe,]
 })
 export class DashboardModule {}

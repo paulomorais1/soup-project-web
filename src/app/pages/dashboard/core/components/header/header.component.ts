@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @angular-eslint/component-selector */
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/resources/auth.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   @Output() menuToggled = new EventEmitter<boolean>();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private router: Router,) {}
   
   ngOnInit() {
    
@@ -30,7 +32,8 @@ export class HeaderComponent implements OnInit {
   }
   
   logout(): void {
-    // Implemente a lógica de logout aqui, se necessário
+    // Implemente a lógica de logout aqui, se necessário6
+    this.router.navigate(['sign-in']);
     console.log('Logged out');
   }
 }
