@@ -4,11 +4,11 @@ import { Component } from '@angular/core';
   selector: 'app-beneficiary',
   template: `
     <app-page-header icon="person_add">
-      <h2>Cadastrar Benficiario </h2>
+      <h2>Cadastrar Benficiário </h2>
 
       <button routerLink="/dashboard/getAll-beneficiary" mat-flat-button color="primary" class="action">
         <mat-icon class="mr-2">home</mat-icon>
-        <span color="primary">Go listar Beneficiário</span>
+        <span color="primary">Listar </span>
       </button>
     </app-page-header>
 

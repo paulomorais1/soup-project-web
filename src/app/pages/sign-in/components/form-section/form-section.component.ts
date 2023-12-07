@@ -54,9 +54,7 @@ export class FormSectionComponent {
   }
 
   onToggleShowPassword() {
-    console.log('Antes de alterar showPassword:', this.showPassword);
     this.showPassword = !this.showPassword;
-    console.log('Depois de alterar showPassword:', this.showPassword);
   }
   
 

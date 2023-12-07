@@ -1,4 +1,4 @@
-// Import your variables
+// Importe suas variáveis
 @import 'variables';
 
 :host {
@@ -11,16 +11,14 @@ mat-drawer {
   min-width: 200px;
   max-width: 300px;
 
-  // Add styling for the drawer content
   .mat-drawer-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: $white-color; // Assuming you have a $background-color variable
+    background: $white-color;
 
-    // Add styling for the date-hour-content
     .date-hour-content {
-      background: $primary-color + '38'; // Assuming you have a $primary-color variable
+      background: $primary-color + '38';
       text-align: center;
       padding: 10px 0;
     }
@@ -42,21 +40,19 @@ mat-drawer-container {
   height: 80vh;
 }
 
-// Add more styles as needed for your specific components
-
-// Media query for screens smaller than 900px
 @media (max-width: 900px) {
   mat-drawer {
-    // Set the max-width to 0 to hide the drawer on smaller screens
-    max-width: 0;
+    max-width: 300px;
+    // Adiciona um efeito de transição para suavizar a abertura/fechamento
+    transition: max-width 0.3s ease;
   }
 
   .margin-left {
     margin-left: 0;
   }
 
-  // Style to show the drawer when it's opened
   mat-drawer[opened="true"] {
-    max-width: 300px;
+    // Aumenta a largura quando o menu está aberto
+    max-width: 100%;
   }
 }

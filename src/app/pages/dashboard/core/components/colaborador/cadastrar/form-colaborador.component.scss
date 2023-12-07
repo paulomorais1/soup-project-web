@@ -1,18 +1,17 @@
 // Add your color variables or import them from a separate file
 // @import 'variables';
-
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   max-width: 800px;
-  width: 100%;
-  margin: auto;
-
+  width: 70%;
+  margin: 0 auto;
+  padding:20px 0 ;
 
   .form__half {
     display: grid;
-    grid-template-columns: repeat(1, 1fr); // Change to one column in small screens
+    grid-template-columns: repeat(1, 1fr);
     gap: 1.2rem;
   }
 
@@ -21,23 +20,28 @@
   }
 
   .form__submit-button {
-    color: #fff; // Use your color variables here
-    background-color: #17B978; // Use your color variables here
+    color: #fff;
+    background-color: #17B978;
     border: none;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-    padding: 0.75rem; // Smaller button size
+    padding: 0.75rem;
     transition: background-color 300ms ease-out;
+    margin-top: 1rem; // Adiciona um espaçamento superior
 
     &:hover {
-      background-color: #0056b3; // Use your color variables here
+      background-color: #17b97893;
     }
   }
 
   @media (min-width: 600px) {
     .form__half {
-      grid-template-columns: repeat(2, 1fr); // Switch back to two columns on larger screens
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form__submit-button {
+      margin-top: 0; // Remove o espaçamento superior em telas maiores
     }
   }
 }

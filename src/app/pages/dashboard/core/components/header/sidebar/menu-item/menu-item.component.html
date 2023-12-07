@@ -1,6 +1,5 @@
 <mat-list>
   <ng-container *ngFor="let item of menu">
-    <!-- If the item doesn't have children, show it as a list item -->
     <ng-container *ngIf="item.subMenu === undefined">
       <mat-list-item
         *ngIf="item.title"
@@ -8,29 +7,29 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <mat-icon [style.color]="item.color" mat-list-icon>
-          {{ item.icon }}
-        </mat-icon>
+        <ng-container *ngIf="item.icon !== undefined && item.icon !== ''">
+          <mat-icon [style.color]="item.color" mat-list-icon>
+            {{ item.icon }}
+          </mat-icon>
+        </ng-container>
         <div mat-line>{{ item.title }}</div>
       </mat-list-item>
     </ng-container>
 
-    <!-- If the item has subMenu, show it as an accordion -->
     <ng-container *ngIf="item.subMenu && item.subMenu.length > 0">
       <mat-expansion-panel [expanded]="item.expanded">
         <mat-expansion-panel-header class="submenu-header">
           <mat-panel-title class="d-flex align-items-center">
-            <mat-icon [style.color]="item.color" mat-list-icon>
-              {{ item.icon }}
-            </mat-icon>
+            <ng-container *ngIf="item.icon !== undefined && item.icon !== ''">
+              <mat-icon [style.color]="item.color" mat-list-icon>
+                {{ item.icon }}
+              </mat-icon>
+            </ng-container>
             <span mat-line class="list-item submenu-title" style="margin-left: 8px;">{{ item.title }}</span>
-            <!-- Adiciona um espaçamento de 8px entre o ícone e o texto -->
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <!-- Recursivamente chama o mesmo componente para subMenu -->
-        <app-menu-item [menu]="item.subMenu"></app-menu-item>
+        <app-menu-item [menu]="item.subMenu" style="display: flex; align-items: center; justify-content: center;"></app-menu-item>
       </mat-expansion-panel>
-      
     </ng-container>
   </ng-container>
 </mat-list>

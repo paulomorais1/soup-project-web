@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import {
   MatSnackBar,
@@ -37,7 +36,6 @@ export class BeneficiaryFormComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  // Variável para rastrear se a solicitação está em andamento
   private isSubmitting = false;
 
   get compositionFamilyControls() {
@@ -45,17 +43,11 @@ export class BeneficiaryFormComponent {
       .controls;
   }
 
-  getFamilyMemberControl(index: number, controlName: string) {
-    return (this.compositionFamilyControls[index] as FormGroup).get(
-      controlName
-    );
-  }
-
   constructor(
     private fb: FormBuilder,
     private beneficiaryService: CreateBeneficiaryService,
     private getFieldErrorMessageService: GetFieldErrorMessageService,
-    private matSnackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.beneficiaryForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
@@ -136,23 +128,15 @@ export class BeneficiaryFormComponent {
       this.beneficiaryForm
     );
   }
-
-  showToast(message: string) {
-    this.matSnackBar.open(message, 'Fechar', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
-
+  
   SubmitCreate(): void {
     if (this.beneficiaryForm.valid) {
-      // Verifique se a solicitação já foi enviada
       if (this.isSubmitting) {
         console.warn('Solicitação já enviada. Aguardando resposta.');
         return;
       }
 
-      this.isSubmitting = true; // Adicione uma variável para rastrear se a solicitação está em andamento
+      this.isSubmitting = true;
 
       const familyReceivepension: iFamilyReceivepension = {
         statusPension: this.beneficiaryForm.get(
@@ -169,10 +153,6 @@ export class BeneficiaryFormComponent {
         zipCode: this.beneficiaryForm.get('address.zipCode')?.value,
         district: this.beneficiaryForm.get('address.district')?.value,
       };
-
-      const housingCondition: IHousingCondition = this.beneficiaryForm.get(
-        'home.housingCondition'
-      )?.value as IHousingCondition;
 
       const home: IHome = {
         housingCondition: this.beneficiaryForm.get('home.housingCondition')
@@ -226,16 +206,12 @@ export class BeneficiaryFormComponent {
         compositionFamily,
         residentHasIllness,
       };
-      console.log(
-        'Enviando requisição para cadastrar beneficiário:',
-        requestCreate
-      );
 
       this.beneficiaryService.SubmitCreate(requestCreate).subscribe(
         (response) => {
-          console.log('Resposta ao cadastrar beneficiário:', response);
-          this.showToast('Cadastrado com sucesso!');
-          this.isSubmitting = false; // Resetar o indicador após o sucesso
+          this.showSuccessToast();
+          this.resetForm();
+          this.isSubmitting = false;
         },
         (error) => {
           console.error('Erro ao cadastrar beneficiário:', error);
@@ -244,22 +220,108 @@ export class BeneficiaryFormComponent {
             console.warn(
               'Usuário já existe. Lidar com isso conforme necessário.'
             );
+            this.showExistingCpfToast();
           }
 
-          this.isSubmitting = false; // Resetar o indicador após um erro
+          this.isSubmitting = false;
+          this.showErrorToast();
         }
       );
     } else {
-      this.showToast('Preencha os campos necessários!!');
+      this.showErrorToast();
     }
+  }
 
-    // Adicione logs para identificar controles inválidos e os erros específicos
-    Object.keys(this.beneficiaryForm.controls).forEach((controlName) => {
-      const control = this.beneficiaryForm.get(controlName);
-      if (control?.invalid) {
-        console.log(`Controle inválido: ${controlName}`);
-        console.log(`Erros: ${JSON.stringify(control.errors)}`);
-      }
+  private resetForm(): void {
+    this.beneficiaryForm.reset({
+      name: '',
+      surname: '',
+      phoneNumber: '',
+      familyReceivepension: {
+        statusPension: 'Não',
+        valuePension: '',
+      },
+      rg: '',
+      cpf: '',
+      dateOfBirth: '',
+      address: {
+        street: '',
+        district: '',
+        city: '',
+        zipCode: '',
+      },
+      home: {
+        housingCondition: 'Não',
+        value: '',
+      },
+      professionFamilyresponsible: null,
+      familyScholarship: {
+        familyStatus: 'Não',
+        familyValue: '',
+      },
+      receivePension: {
+        statusPension: 'Não',
+        valueReceive: '',
+      },
+      compositionFamily: [this.createFamilyMember()],
+      basicBasketDeliveryDate: '',
+      residentHasIllness: {
+        statusIllness: 'Não',
+        which: '',
+      },
+      additionalDetails: '',
+      interviewer: false,
+    }, { onlySelf: true, emitEvent: false });
+  
+    
+  this.beneficiaryForm.markAsPristine();
+  this.beneficiaryForm.markAsUntouched();
+
+  this.compositionFamilyControls.forEach((control) => {
+    control.reset();
+    control.markAsPristine();
+    control.markAsUntouched();
+  });
+
+  Object.keys(this.beneficiaryForm.controls).forEach((key) => {
+    const control = this.beneficiaryForm.get(key);
+    if (control) {
+      control.updateValueAndValidity();
+    }
+  });
+
+  Object.keys(this.beneficiaryForm.get('address')?.value).forEach((key) => {
+    const control = this.beneficiaryForm.get(`address.${key}`);
+    if (control) {
+      control.updateValueAndValidity();
+    }
+  });
+}
+  getFamilyMemberControl(index: number, controlName: string) {
+    const familyMember = (this.beneficiaryForm.get('compositionFamily') as FormArray)
+      .at(index) as FormGroup;
+    return familyMember.get(controlName)?.value;
+  }
+  
+  
+  private showSuccessToast() {
+    this.snackBar.open('Cadastrado com Sucesso', 'Fechar', {
+      duration: 3000,
+      panelClass: ['success-toast'],
+    });
+  }
+
+  private showErrorToast() {
+    this.snackBar.open('Erro ao cadastrar. Verifique os campos.', 'Fechar', {
+      duration: 3000,
+      panelClass: ['error-toast'],
+    });
+  }
+
+  private showExistingCpfToast() {
+    this.snackBar.open('CPF já existe. Verifique o CPF inserido.', 'Fechar', {
+      duration: 3000,
+      panelClass: ['error-toast'],
     });
   }
 }

@@ -74,7 +74,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Data de Nascimento:</mat-label>
+      <mat-label>Data de nascimento:</mat-label>
       <input
         matInput
         [matDatepicker]="dateOfBirthPicker"
@@ -125,7 +125,7 @@
     </mat-form-field>
 
     <mat-form-field formGroupName="address">
-      <mat-label>CEP:</mat-label>
+      <mat-label>Cep:</mat-label>
       <input
         matInput
         formControlName="zipCode"
@@ -139,7 +139,7 @@
 
   <div class="form__half__option">
     <div formGroupName="home">
-      <label for="housingCondition">Condição de Moradia:</label>
+      <label for="housingCondition">Condição de moradia:</label>
       <select
         formControlName="housingCondition"
         id="housingCondition"
@@ -154,7 +154,7 @@
     <!-- Valor da Moradia -->
     <div formGroupName="home">
       <mat-form-field>
-        <mat-label>Valor da Moradia:</mat-label>
+        <mat-label>Valor da moradia:</mat-label>
         <input
           matInput
           formControlName="value"
@@ -172,7 +172,7 @@
     <!-- Profissão do responsavel -->
     <div>
       <mat-form-field>
-        <mat-label>Profissão do Responsavel da Familía:</mat-label>
+        <mat-label>Profissão do responsável da familía:</mat-label>
         <input
           matInput
           formControlName="professionFamilyresponsible"
@@ -188,7 +188,7 @@
 
     <!-- Recebe Bolsa Família -->
     <div formGroupName="familyScholarship">
-      <label for="familyStatus">Recebe Bolsa Família:</label>
+      <label for="familyStatus">Recebe bolsa família:</label>
       <select
         formControlName="familyStatus"
         id="familyStatus"
@@ -226,7 +226,7 @@
 
     <!-- Recebe Pensão -->
     <div formGroupName="receivePension">
-      <label for="statusPension">Recebe Pensão:</label>
+      <label for="statusPension">Recebe pensão:</label>
       <select
         formControlName="statusPension"
         id="statusPension"
@@ -278,31 +278,31 @@
       [formGroupName]="i"
     >
       <mat-form-field>
-        <mat-label>Nome</mat-label>
+        <mat-label>Nome:</mat-label>
         <input matInput formControlName="name" name="name" />
         <mat-error>{{ getErrorMessage("name") }}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Sobrenome</mat-label>
+        <mat-label>Sobrenome:</mat-label>
         <input matInput formControlName="surname" name="surname" />
         <mat-error>{{ getErrorMessage("surname") }}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Idade</mat-label>
+        <mat-label>Idade:</mat-label>
         <input matInput formControlName="age" name="age" type="number" />
         <mat-error>{{ getErrorMessage("age") }}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Afiliação*</mat-label>
+        <mat-label>Afiliação:</mat-label>
         <input matInput formControlName="kinship" name="kinship" />
         <mat-error>{{ getErrorMessage("kinship") }}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Profissão</mat-label>
+        <mat-label>Profissão:</mat-label>
         <input matInput formControlName="profession" name="profession" />
         <mat-error>{{ getErrorMessage("profession") }}</mat-error>
       </mat-form-field>
@@ -343,7 +343,7 @@
       </div>
 
       <div formGroupName="specialNeeds">
-        <label for="statusSpecialNeeds">Necessidades Especiais:</label>
+        <label for="statusSpecialNeeds">Necessidades especiais:</label>
         <select
           formControlName="statusSpecialNeeds"
           id="statusSpecialNeeds"
@@ -387,7 +387,7 @@
 
   <!-- Data de entrega da cesta básica -->
   <mat-form-field>
-    <mat-label>Data de entrega da cesta básica</mat-label>
+    <mat-label>Data de entrega da cesta básica:</mat-label>
     <input
       matInput
       [matDatepicker]="deliveryDatePicker"
@@ -404,7 +404,7 @@
 
   <!-- Algum morador possui enfermidade -->
   <div formGroupName="residentHasIllness">
-    <label for="statusIllness">ALGUM MORADOR POSSUI INFERMIDADE:</label>
+    <label for="statusIllness">Algum morador possui enfermidade:</label>
     <select
       formControlName="statusIllness"
       id="statusIllness"
@@ -438,7 +438,7 @@
 
   <!-- Informações úteis e complementares -->
   <mat-form-field>
-    <mat-label>Informações úteis e complementares?</mat-label>
+    <mat-label>Informações úteis ou complementares?</mat-label>
     <textarea
       matInput
       formControlName="additionalDetails"
@@ -449,9 +449,9 @@
     <mat-error>{{ getErrorMessage("additionalDetails") }}</mat-error>
   </mat-form-field>
 
-  <!-- Intrevistador -->
+  <!-- Entrevistador -->
   <mat-form-field>
-    <mat-label>Intrevistador</mat-label>
+    <mat-label>Entrevistador</mat-label>
     <input matInput formControlName="interviewer" name="interviewer" />
     <mat-error>{{ getErrorMessage("interviewer") }}</mat-error>
   </mat-form-field>

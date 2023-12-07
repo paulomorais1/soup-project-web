@@ -36,19 +36,19 @@
     </mat-form-field>
     
     <mat-form-field formGroupName="address">
-      <mat-label>CEP:</mat-label>
-      <input matInput formControlName="zipCode" placeholder="CEP" required />
+      <mat-label>Cep:</mat-label>
+      <input matInput formControlName="zipCode" placeholder="CEP" type='number' required />
     </mat-form-field>
     
 
     <mat-form-field>
       <mat-label>Telefone:</mat-label>
-      <input matInput formControlName="phone" required />
+      <input matInput formControlName="phone" type="tel" required />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email:</mat-label>
-      <input matInput formControlName="email" />
+      <input matInput formControlName="email" type="email" required />
     </mat-form-field>
   </div>
 

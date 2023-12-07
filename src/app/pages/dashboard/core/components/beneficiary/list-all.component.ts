@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
         class="action"
       >
         <mat-icon class="mr-2">home</mat-icon>
-        <span>Go Beneficiário</span>
+        <span>Cadastrar</span>
       </button>
     </app-page-header>
 

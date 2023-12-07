@@ -14,7 +14,7 @@ import { AuthService } from 'app/resources/auth.service';
 export class HeaderComponent implements OnInit {
   name: string | null | undefined = null;
   surname: string | null | undefined = null;
-  role: string | null | undefined = null;
+  // role: string | null | undefined = null;
 
   @Output() menuToggled = new EventEmitter<boolean>();
 
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     const user = this.authService.loginResponse?.body; 
     this.name = typeof user === 'object' && 'name' in user ? (user as any).name : null;
     this.surname = typeof user === 'object' && 'surname' in user ? (user as any).surname : null;
-    this.role = typeof user === 'object' && 'role' in user ? (user as any).role : null;
+    // this.role = typeof user === 'object' && 'role' in user ? (user as any).role : null;
   
  
   }

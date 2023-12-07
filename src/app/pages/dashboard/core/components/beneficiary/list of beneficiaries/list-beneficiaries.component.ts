@@ -13,8 +13,7 @@ import { GetAllBeneficiaryService } from 'app/resources/models/services/benefici
 })
 export class BeneficiaryListComponent implements OnInit {
   // Colunas a serem exibidas na tabela
-  displayedColumns: string[] = ['name', 'phoneNumber', 'dateOfBirth', 'address.street' , 'address.district'  ,'address.zipCode'  , 'details'];
-
+  displayedColumns: string[] = ['name', 'phoneNumber', 'dateOfBirth', 'address.street' , 'address.district'  ,'address.zipCode'];
 
   // Flag para controle de erro durante o carregamento
   loadingError: boolean = false;
@@ -34,37 +33,25 @@ export class BeneficiaryListComponent implements OnInit {
 
   // Método para buscar beneficiários do serviço
   loadBeneficiaries(): void {
-    console.log('Carregando beneficiários...');
-
     // Buscar beneficiários usando o getAllBeneficiaries do serviço
     this.beneficiaryService.getAllBeneficiaries().pipe(
       catchError((error) => {
         console.error('Erro ao buscar beneficiários:', error);
-
         // Atualizar a flag de erro
         this.loadingError = true;
-
         // Propagar o erro para ser tratado em níveis superiores
         throw error;
       })
     ).subscribe(
       (result: any) => {
-        console.log(result, 'result início');
-
         // Certifique-se de que 'body' existe antes de acessá-lo
         const beneficiaries = result.body ? result.body as IBeneficiary[] : [];
-
-        console.log('Beneficiários recebidos:', beneficiaries);
-
         this.dataSource.data = beneficiaries;
         this.loadingError = false;
-        console.log('Dados recebidos no componente:', result);
-        console.log('Beneficiários no componente:', this.dataSource.data);
       },
       (error) => {
         // Tratamento de erro durante a subscrição
         console.error('Erro ao carregar beneficiários:', error);
-
         // Atualizar a flag de erro
         this.loadingError = true;
       }
@@ -81,9 +68,6 @@ export class BeneficiaryListComponent implements OnInit {
       // Lógica a ser executada após o fechamento do modal, se necessário
     });
   }
-
-
-
 getColumnValue(element: IBeneficiary, column: string): any {
   // Verifique se o elemento e a coluna são válidos
   if (!element || !column) {
@@ -103,20 +87,21 @@ getColumnValue(element: IBeneficiary, column: string): any {
     if (value && value.hasOwnProperty(prop)) {
       // Atualiza o valor para a próxima propriedade
       value = value[prop];
+
+      // Adiciona lógica específica para ocultar dados do CPF e RG
+      if (prop === 'cpf' || prop === 'rg') {
+        value = 'Confidencial'; // Substitua por qualquer valor que você deseja exibir para esses campos
+      }
     } else {
       // Se a propriedade não existir, define o valor como vazio e sai do loop
       value = '';
-      console.error('Propriedade não encontrada:', prop, 'em', column, 'para', element);
+      // Remova o comentário da linha abaixo se quiser evitar mensagens de erro no console
+      // console.error('Propriedade não encontrada:', prop, 'em', column, 'para', element);
       break;
     }
   }
 
-  console.log('Valor obtido para', column, ':', value);
-
   return value;
 }
-
-// ...
-
 
 }
