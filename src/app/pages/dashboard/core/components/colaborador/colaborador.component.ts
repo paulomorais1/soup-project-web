@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
   selector: 'app-colaborador',
   template: `
     <app-page-header icon="person_add">
-      <h2>Adicionar Colaborador</h2>
+      <h2>Adicionar Doador</h2>
 
       <button routerLink="/dashboard/register-beneficiary" mat-flat-button color="primary" class="action">
         <mat-icon class="mr-2">home</mat-icon>

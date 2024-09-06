@@ -35,7 +35,7 @@ import { LoginService } from 'app/resources/models/services/user/sign-in/login.s
 export class FormSectionComponent {
   formGroup: FormGroup;
   requestLogin: { phone: string; password: string }; // Adicione esta propriedade
-  showPassword = false;
+  showPassword = true;
 
   constructor(
     private formBuilder: FormBuilder,

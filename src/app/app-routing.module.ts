@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, type Routes } from '@angular/router';
-import { SignInComponent } from '@pages/sign-in/sign-in.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './resources/auth-guard.service';
 
 const routes: Routes = [
@@ -20,7 +19,6 @@ const routes: Routes = [
     loadChildren: async () =>
       (await import('@pages/sign-in/sign-in.module')).SignInModule,
   },
-  { path: '', component: SignInComponent },
   {
     path: 'dashboard',
     canActivateChild: [AuthGuardService],
@@ -28,14 +26,12 @@ const routes: Routes = [
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-   },
-
+  },
   {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',
   },
- 
 ];
 
 @NgModule({

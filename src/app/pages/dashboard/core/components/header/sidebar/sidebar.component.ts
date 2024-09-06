@@ -27,7 +27,7 @@ export class DashboardSidebarComponent {
 
   menu: Menu = [
     {
-      title: 'Colaborador',
+      title: 'Doador',
       icon: 'group_add',
       color: '#ff7f0e',
       subMenu: [
@@ -35,14 +35,14 @@ export class DashboardSidebarComponent {
           title: 'Cadastrar',
           icon: 'group_add',
 
-          link: '/dashboard/register-colaborador',
+          link: '/dashboard/register-donor',
           color: '#ff7f0e',
         },
-        {
-          title: 'Customers',
-          link: '/dashboard/colaborador-customers',
-          color: '#ff7f0e',
-        },
+        // {
+        //   title: 'Customers',
+        //   link: '/dashboard/colaborador-customers',
+        //   color: '#ff7f0e',
+        // },
       ],
     },
     {

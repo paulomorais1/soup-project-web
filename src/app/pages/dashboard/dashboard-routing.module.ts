@@ -13,7 +13,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'register-colaborador',
+        path: 'register-donor',
         component: ColaboradorComponent,
       },
       {
