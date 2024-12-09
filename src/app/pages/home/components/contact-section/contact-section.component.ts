@@ -43,6 +43,7 @@ export class ContactSectionComponent {
 
   messageMaxLength = 500;
 
+  
   address = `${contacts[2].value} • ${contacts[3].value}`;
   contact = `${contacts[1].value} • ${contacts[0].value}`;
 

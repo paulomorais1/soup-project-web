@@ -1,0 +1,78 @@
+<form [formGroup]="userForm" class="form" (ngSubmit)="onSignUp()">
+  <div class="form__half">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sobrenome:</mat-label>
+      <input matInput formControlName="surname" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Função:</mat-label>
+      <input matInput formControlName="role" required />
+    </mat-form-field>
+
+    <mat-form-field formGroupName="address">
+      <mat-label>Endereço:</mat-label>
+      <input matInput formControlName="street" placeholder="Rua" required />
+    </mat-form-field>
+
+    <mat-form-field formGroupName="address">
+      <mat-label>Bairro:</mat-label>
+      <input
+        matInput
+        formControlName="district"
+        placeholder="Bairro"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field formGroupName="address">
+      <mat-label>Cidade:</mat-label>
+      <input matInput formControlName="city" placeholder="Cidade" required />
+    </mat-form-field>
+
+    <mat-form-field formGroupName="address">
+      <mat-label>CEP:</mat-label>
+      <input matInput formControlName="zipCode" placeholder="CEP" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefone:</mat-label>
+      <input matInput formControlName="phone" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+  </div>
+
+  <div class="form__half">
+    <mat-form-field color="accent" hideRequiredMarker="true">
+      <mat-label>Senha:</mat-label>
+      <input
+        matInput
+        [type]="showPassword ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="onToggleShowPassword()"
+      >
+        <mat-icon>{{
+          showPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <button class="form__submit-button" [disabled]="isSubmitting" type="submit">
+    Cadastrar
+  </button>
+</form>
